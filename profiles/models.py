@@ -12,7 +12,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=200, blank=True)
     about = models.CharField(max_length=500, blank=True)
     picture = models.ImageField(
-        upload_to='images/', default='default_profile_igf8vw')
+        upload_to='images/', default='../default_profile_igf8vw')
 
     class Meta:
         ordering = ['-created']
