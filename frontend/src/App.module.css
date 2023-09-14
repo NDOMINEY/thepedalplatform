@@ -8,6 +8,10 @@ body {
     background-color: #d9f4ef;
 }
 
+.Content {
+    margin-top: 80px;
+}
+
 a {
     color: black;
     padding: 2px;
