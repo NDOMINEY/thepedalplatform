@@ -1,0 +1,8 @@
+.NavBar {
+    background-color: #42c6ae;
+    text-align: right;
+}
+
+.links>a {
+    color: black;
+}

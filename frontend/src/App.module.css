@@ -1,0 +1,31 @@
+* {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
+body {
+    background-color: #d9f4ef;
+}
+
+a {
+    color: black;
+    padding: 2px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:hover i {
+    color: #354B46;
+}
+
+i {
+    color: black;
+}
+
+i:hover {
+    cursor: pointer;
+    color: #354B46;
+}

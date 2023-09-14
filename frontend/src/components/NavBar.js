@@ -1,17 +1,24 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { Navbar, Nav } from "react-bootstrap";
+import logo_short_transparent from '../assets/logo_short_transparent.png';
+import styles from '../styles/NavBar.module.css';
 
 
 const NavBar = () => {
     return (
-        <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="">The Pedal Platform</Navbar.Brand>
-            <Nav className="ml-auto">
-                <Nav.Link href="">Home</Nav.Link>
-                <Nav.Link href="">Products</Nav.Link>
-                <Nav.Link href="">Login</Nav.Link>
-            </Nav>
+        <Navbar className={styles.NavBar} expand="lg">
+            <Navbar.Brand href="#">
+                <img src={logo_short_transparent} alt='logo' height="50" />
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbarScroll" />
+            <Navbar.Collapse id="navbarScroll">
+                <Nav className="ml-auto text-right links">
+                    <Nav.Link href="">Home</Nav.Link>
+                    <Nav.Link href="">Products</Nav.Link>
+                    <Nav.Link href="">Login</Nav.Link>
+                    <Nav.Link href="">Register</Nav.Link>
+                </Nav>
+            </Navbar.Collapse>
         </Navbar>
     );
 };
