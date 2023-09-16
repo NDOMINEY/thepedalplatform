@@ -1,5 +1,6 @@
 import styles from './App.module.css';
 import NavBar from './components/NavBar';
+import RegisterForm from './pages/RegisterForm';
 import Landing from './components/Landing';
 import Container from "react-bootstrap/Container";
 import { Route, Switch } from "react-router-dom";
@@ -16,7 +17,7 @@ function App() {
                     } />
                     <Route exact path="/products" render={() => <h1>Products</h1>} />
                     <Route exact path="/login" render={() => <h1>Login</h1>} />
-                    <Route exact path="/register" render={() => <h1>Register</h1>} />
+                    <Route exact path="/register" render={() => <RegisterForm />} />
                     <Route render={() => <p>Page not found!</p>} />
                 </Switch>
             </Container>
