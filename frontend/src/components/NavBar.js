@@ -3,11 +3,11 @@ import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import logo_short_transparent from '../assets/logo_short_transparent.png';
 import styles from '../styles/NavBar.module.css';
-import { CurrentUserContext } from "../App";
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 
 const NavBar = () => {
-    const currentUser = useContext(CurrentUserContext);
+    const currentUser = useContext(useCurrentUser);
 
     const loggedIn = (
         <>
