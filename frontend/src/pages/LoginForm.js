@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Col, Row, Container, Form, Button, Alert } from "react-bootstrap";
 import axios from 'axios';
-import { SetCurrentUserContext } from "../App";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const LoginForm = () => {
-    const setCurrentUser = useContext(SetCurrentUserContext);
+    const setCurrentUser = useContext(useSetCurrentUser);
 
     const [loginData, setLoginData] = useState({
         username: '',
