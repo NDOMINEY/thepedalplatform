@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import axios from 'axios';
+import { useContext, createContext, useEffect, useState } from "react";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -31,3 +31,5 @@ export const CurrentUserProvider = ({ children }) => {
         </CurrentUserContext.Provider>
     );
 };
+
+export default CurrentUserProvider;
