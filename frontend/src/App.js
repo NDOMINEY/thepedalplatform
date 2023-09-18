@@ -9,7 +9,6 @@ import "./api/axiosDefaults";
 
 
 function App() {
-
     return (
         <div className={styles.App}>
             <NavBar />

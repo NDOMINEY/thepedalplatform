@@ -1,17 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import logo_short_transparent from '../assets/logo_short_transparent.png';
 import styles from '../styles/NavBar.module.css';
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-
+import axios from 'axios';
+import { SetCurrentUserContext, CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
     const currentUser = useContext(CurrentUserContext);
+    const setCurrentUser = useContext(SetCurrentUserContext);
+
+
+    console.log('Check 1', currentUser);
+
+    console.log('Check 2', useContext(CurrentUserContext));
+
+    const handleLogout = async () => {
+        try {
+            await axios.post("dj-rest-auth/logout/");
+            setCurrentUser(null);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     const loggedIn = (
         <>
-            <p>Welcome!</p>
+            <NavLink to="/" onClick={handleLogout}>Logout</NavLink>
+
         </>
     );
     const loggedOut = (
