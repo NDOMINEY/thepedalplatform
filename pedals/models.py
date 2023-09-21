@@ -36,15 +36,8 @@ class Brands(models.Model):
 class Pedal(models.Model):
     brand = models.OneToOneField(Brands, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
-    category = models.CharField(max_length=50,
-        choices=CATEGORY,
-        default='£'
-    )
-    price = models.CharField(
-        max_length=5,
-        choices=PRICE,
-        default='£'
-    )
+    category = models.CharField(max_length=50, choices=CATEGORY, default='')
+    price = models.CharField(max_length=5, choices=PRICE, default='£')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
