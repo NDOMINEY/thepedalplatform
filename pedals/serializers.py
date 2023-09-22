@@ -12,9 +12,10 @@ class BrandsSerializer(serializers.ModelSerializer):
 
 
 class PedalSerializer(serializers.ModelSerializer):
+    brand = BrandsSerializer(many=False)
 
     class Meta:
         model = Pedal
         fields = [
-            'id', 'brand','name','category','price','created', 'updated'
+            'id', 'brand', 'name', 'category', 'price', 'created', 'updated'
         ]
