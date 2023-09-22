@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { axiosReq } from "../api/axiosDefaults";
+import { Card } from "react-bootstrap";
+
 
 
 
@@ -32,7 +34,13 @@ const ProductsView = () => {
         <div>
             <p>Products</p>
             {hasLoaded ? product.map((product) => (
-                <p>{product.name}</p>
+                <Card key={product.id} style={{ width: '18rem' }}>
+                    <Card.Body>
+                        <Card.Title>{product.name}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{product.brand.brand}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">{product.price}</Card.Subtitle>
+                    </Card.Body>
+                </Card>
             )) : (
                 <p>Loading...</p>
             )}
