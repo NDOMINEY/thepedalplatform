@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
-import { Navbar, Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-
+// Form, FormControl, Button
+import { SetCurrentUserContext, CurrentUserContext } from "../contexts/CurrentUserContext";
+import axios from 'axios';
 import logo_short_transparent from '../assets/logo_short_transparent.png';
 import styles from '../styles/NavBar.module.css';
-import axios from 'axios';
-import { SetCurrentUserContext, CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
+
+    const [expanded, setExpanded] = useState(false);
 
     const currentUser = useContext(CurrentUserContext);
     const setCurrentUser = useContext(SetCurrentUserContext);
@@ -20,38 +22,114 @@ const NavBar = () => {
         } catch (err) {
             console.log(err);
         }
+        setExpanded(false);
     };
 
     const loggedIn = (
         <>
-            <NavLink to="/" onClick={handleLogout}>Logout</NavLink>
-
+            <NavDropdown title="My Account" id="basic-nav-dropdown">
+                <NavDropdown.Item>
+                    <Link
+                        to="/profile"
+                        className="nav-link"
+                        onClick={() => setExpanded(false)}
+                    >
+                        My Profile
+                    </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                    <Link
+                        to="/favouritepedals"
+                        className="nav-link"
+                        onClick={() => setExpanded(false)}
+                    >
+                        Favourite Pedals
+                    </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                    <Link
+                        to="/"
+                        className="nav-link"
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </Link>
+                </NavDropdown.Item>
+            </NavDropdown>
         </>
     );
     const loggedOut = (
         <>
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/register">Register</NavLink>
+            <Link
+                to="/login"
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+            >
+                Login
+            </Link>
+            <Link
+                to="/register"
+                className="nav-link"
+                onClick={() => setExpanded(false)}
+            >
+                Register
+            </Link>
         </>
     );
 
     return (
-        <Navbar className={styles.NavBar} expand="lg" fixed="top">
-            <NavLink to="/">
+        // <Navbar className={styles.NavBar} expand="lg">
+        //     <Navbar.Brand>
+        //         <img src={logo_short_transparent} alt='logo' height="50" />
+        //     </Navbar.Brand>
+        //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        //     <Navbar.Collapse id="basic-navbar-nav">
+        //         <Nav className="mr-auto">
+        //             <NavLink to="/">Home</NavLink>
+        //             <NavLink to="/products">Products</NavLink>
+
+        //             
+        //         </Nav>
+        //         <Form inline>
+        //             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        //             <Button variant="outline-success">Search</Button>
+        //         </Form>
+        //     </Navbar.Collapse>
+        // </Navbar>
+
+        <Navbar className={styles.NavBar} expanded={expanded} expand="lg">
+            <Container fluid>
                 <Navbar.Brand>
-                    <img src={logo_short_transparent} alt='logo' height="50" />
+                    <Link to="/" className="nav-link"
+                        onClick={() => setExpanded(false)}>
+                        <img src={logo_short_transparent} alt='logo' height="50" />
+                    </Link>
                 </Navbar.Brand>
-            </NavLink>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
-                <Nav className="ml-auto text-right">
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/products">Products</NavLink>
+                <Navbar.Toggle
+                    aria-controls="navbarScroll"
+                    onClick={() => setExpanded(!expanded)}
+                />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav className="ml-auto" navbarScroll>
+                        <Link
+                            to="/"
+                            className="nav-link"
+                            onClick={() => setExpanded(false)}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="/products"
+                            className="nav-link"
+                            onClick={() => setExpanded(false)}
+                        >
+                            Products
+                        </Link>
 
-                    {currentUser ? loggedIn : loggedOut}
-
-                </Nav>
-            </Navbar.Collapse>
+                        {currentUser ? loggedIn : loggedOut}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
         </Navbar>
     );
 };
