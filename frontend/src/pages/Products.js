@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosReq } from "../api/axiosDefaults";
-import { Card, Form, FormControl } from "react-bootstrap";
+import { Card, Form, FormControl, Button } from "react-bootstrap";
 
 
 
@@ -10,6 +10,7 @@ const ProductsView = () => {
     const [product, setProduct] = useState({ results: [] });
     const [categories, setCategories] = useState([]);
     const [hasLoaded, setHasLoaded] = useState(false);
+    const [search, setSearch] = useState("");
     const [query, setQuery] = useState("");
 
     const handleCategory = (event) => {
@@ -22,6 +23,11 @@ const ProductsView = () => {
 
         console.log(categories);
 
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setQuery(search);
     };
 
     useEffect(() => {
@@ -43,48 +49,52 @@ const ProductsView = () => {
         <div>
             <p>Products</p>
 
+            <Form.Check
+                id={'Octave'}
+                value='Octave'
+                label='Octave'
+                onChange={handleCategory}
+            />
+            <Form.Check
+                id={'Fuzz'}
+                value='Fuzz'
+                label='Fuzz'
+                onChange={handleCategory}
+            />
+            <Form.Check
+                id={'Chorus'}
+                value='Chorus'
+                label='Chorus'
+                onChange={handleCategory}
+            />
+            <Form.Check
+                id={'Looper'}
+                value='Looper'
+                label='Looper'
+                onChange={handleCategory}
+            />
+            <Form.Check
+                id={'Overdrive and Distortion'}
+                value='Overdrive and Distortion'
+                label='Overdrive and Distortion'
+                onChange={handleCategory}
+            />
+            <Form.Check
+                id={'Compressor'}
+                value='Compressor'
+                label='Compressor'
+                onChange={handleCategory}
+            />
 
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <FormControl type="text"
                     placeholder="Search"
-                    className="mr-sm-2" value={query}
-                    onChange={(event) => setQuery(event.target.value)} />
-                <Form.Check
-                    id={'Octave'}
-                    value='Octave'
-                    label='Octave'
-                    onChange={handleCategory}
-                />
-                <Form.Check
-                    id={'Fuzz'}
-                    value='Fuzz'
-                    label='Fuzz'
-                    onChange={handleCategory}
-                />
-                <Form.Check
-                    id={'Chorus'}
-                    value='Chorus'
-                    label='Chorus'
-                    onChange={handleCategory}
-                />
-                <Form.Check
-                    id={'Looper'}
-                    value='Looper'
-                    label='Looper'
-                    onChange={handleCategory}
-                />
-                <Form.Check
-                    id={'Overdrive and Distortion'}
-                    value='Overdrive and Distortion'
-                    label='Overdrive and Distortion'
-                    onChange={handleCategory}
-                />
-                <Form.Check
-                    id={'Compressor'}
-                    value='Compressor'
-                    label='Compressor'
-                    onChange={handleCategory}
-                />
+                    className="mr-sm-2"
+                    value={search}
+                    onChange={(event) => setSearch(event.target.value)} />
+                <Button type="submit">
+                    Search
+                </Button>
             </Form>
 
             {hasLoaded ? product.filter(function (product) {
@@ -93,7 +103,6 @@ const ProductsView = () => {
                 } else {
                     return categories.includes(product.category);
                 }
-
             }).map((product) => (
 
                 <Card key={product.id} style={{ width: '18rem' }}>
