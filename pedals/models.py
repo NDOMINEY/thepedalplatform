@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 
 CATEGORY = (
-    ("CHORUS", "Chorus"),
-    ("LOOPER", "Looper"),
-    ("OCTAVE", "Octave"),
-    ("FUZZ", "Fuzz"),
-    ("OVERDRIVE AND DISTORTION", "Overdrive and Distortion"),
-    ("COMPRESSOR", "Compressor")
+    ("Chorus", "Chorus"),
+    ("Looper", "Looper"),
+    ("Octave", "Octave"),
+    ("Fuzz", "Fuzz"),
+    ("Overdrive and Distortion", "Overdrive and Distortion"),
+    ("Compressor", "Compressor")
 )
 
 

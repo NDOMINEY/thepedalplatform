@@ -1,7 +1,8 @@
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import generics, status, filters
+from rest_framework import generics, status, filters, permissions
+from tpp.permissions import IsOwnerOrReadOnly
 from .models import Brands, Pedal
 from .serializers import BrandsSerializer, PedalSerializer
 
@@ -38,11 +39,21 @@ class PedalList(generics.ListAPIView):
     """
     List all pedals.
     """
-
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ['brand__brand', 'name']
-    queryset = Pedal.objects.all()
     serializer_class = PedalSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    queryset = Pedal.objects.all()
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter)
+
+    # search fields
+    search_fields = ['brand__brand', 'name']
+
+    # order fields to filter
+    ordering_fields = [
+        'brand__brand',
+        'category',
+        'price',
+    ]
 
 
 class PedalDetail(APIView):
