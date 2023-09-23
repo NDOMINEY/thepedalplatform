@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-// Form, FormControl, Button
+// 
 import { SetCurrentUserContext, CurrentUserContext } from "../contexts/CurrentUserContext";
 import axios from 'axios';
 import logo_short_transparent from '../assets/logo_short_transparent.png';
@@ -78,25 +78,6 @@ const NavBar = () => {
     );
 
     return (
-        // <Navbar className={styles.NavBar} expand="lg">
-        //     <Navbar.Brand>
-        //         <img src={logo_short_transparent} alt='logo' height="50" />
-        //     </Navbar.Brand>
-        //     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        //     <Navbar.Collapse id="basic-navbar-nav">
-        //         <Nav className="mr-auto">
-        //             <NavLink to="/">Home</NavLink>
-        //             <NavLink to="/products">Products</NavLink>
-
-        //             
-        //         </Nav>
-        //         <Form inline>
-        //             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        //             <Button variant="outline-success">Search</Button>
-        //         </Form>
-        //     </Navbar.Collapse>
-        // </Navbar>
-
         <Navbar className={styles.NavBar} expanded={expanded} expand="lg">
             <Container fluid>
                 <Navbar.Brand>
@@ -105,11 +86,15 @@ const NavBar = () => {
                         <img src={logo_short_transparent} alt='logo' height="50" />
                     </Link>
                 </Navbar.Brand>
+
                 <Navbar.Toggle
                     aria-controls="navbarScroll"
                     onClick={() => setExpanded(!expanded)}
                 />
+
                 <Navbar.Collapse id="navbarScroll">
+
+
                     <Nav className="ml-auto" navbarScroll>
                         <Link
                             to="/"
@@ -128,6 +113,7 @@ const NavBar = () => {
 
                         {currentUser ? loggedIn : loggedOut}
                     </Nav>
+
                 </Navbar.Collapse>
             </Container>
         </Navbar>
