@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosReq } from "../api/axiosDefaults";
-import { Card } from "react-bootstrap";
+import { Card, Form, FormControl } from "react-bootstrap";
 
 
 
@@ -9,17 +9,12 @@ const ProductsView = () => {
 
     const [product, setProduct] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
-
-    console.log(product);
-    console.log(hasLoaded);
-    console.log(product);
-
-
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         const fetchPedals = async () => {
             try {
-                const { data } = await axiosReq.get(`/pedal/`);
+                const { data } = await axiosReq.get(`/pedal/?search=${query}`);
                 setProduct(data);
                 setHasLoaded(true);
             } catch (err) {
@@ -28,11 +23,18 @@ const ProductsView = () => {
         };
         setHasLoaded(false);
         fetchPedals();
-    }, []);
+    }, [query]);
 
     return (
         <div>
             <p>Products</p>
+            <Form>
+                <FormControl type="text"
+                    placeholder="Search by product name"
+                    className="mr-sm-2" value={query}
+                    onChange={(event) => setQuery(event.target.value)} />
+            </Form>
+
             {hasLoaded ? product.map((product) => (
                 <Card key={product.id} style={{ width: '18rem' }}>
                     <Card.Body>
