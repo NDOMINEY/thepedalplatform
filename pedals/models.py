@@ -34,7 +34,8 @@ class Brands(models.Model):
 
 
 class Pedal(models.Model):
-    brand = models.ForeignKey(Brands, on_delete=models.CASCADE)
+    brand = models.ForeignKey(
+        Brands, on_delete=models.CASCADE, related_name='pedals')
     name = models.CharField(max_length=200, blank=True)
     category = models.CharField(max_length=50, choices=CATEGORY, default='£')
     price = models.CharField(max_length=5, choices=PRICE, default='£')

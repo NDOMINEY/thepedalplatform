@@ -12,7 +12,7 @@ class BrandsSerializer(serializers.ModelSerializer):
 
 
 class PedalSerializer(serializers.ModelSerializer):
-    brand = BrandsSerializer(many=False)
+    brand = serializers.ReadOnlyField(source='brand.brand')
 
     class Meta:
         model = Pedal

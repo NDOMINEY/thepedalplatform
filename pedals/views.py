@@ -40,7 +40,7 @@ class PedalList(generics.ListAPIView):
     """
 
     filter_backends = (filters.SearchFilter,)
-    search_fields = ['name']
+    search_fields = ['brand__brand', 'name']
     queryset = Pedal.objects.all()
     serializer_class = PedalSerializer
 
