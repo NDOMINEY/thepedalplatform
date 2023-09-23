@@ -1,7 +1,7 @@
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import generics, status, filters
 from .models import Brands, Pedal
 from .serializers import BrandsSerializer, PedalSerializer
 
@@ -34,12 +34,15 @@ class BrandsDetail(APIView):
         return Response(serializer.data)
 
 
-class PedalList(APIView):
-    def get(self, request):
-        pedal = Pedal.objects.all()
-        serializer = PedalSerializer(
-            pedal, many=True, context={'request': request})
-        return Response(serializer.data)
+class PedalList(generics.ListAPIView):
+    """
+    List all pedals.
+    """
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ['name']
+    queryset = Pedal.objects.all()
+    serializer_class = PedalSerializer
 
 
 class PedalDetail(APIView):
