@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosReq } from "../api/axiosDefaults";
 import { Form, FormControl } from "react-bootstrap";
 import styles from '../styles/ProductList.module.css';
+import { Link } from "react-router-dom";
 
 
 
@@ -110,8 +111,8 @@ const ProductsView = () => {
             <section className={styles.product_title}>
                 <h1>
                     The Pedal Inventory!
-                </h1>       
-            </section>  
+                </h1>
+            </section>
 
             <section className={styles.product_list}>
 
@@ -122,20 +123,21 @@ const ProductsView = () => {
                         return categories.includes(product.category);
                     }
                 }).map((product) => (
+                    <Link to={`/products/${product.id}`}>
+                        <div className={styles.product_items} key={product.id}>
 
-                    <div className={styles.product_items} key={product.id}>
+                            <h6 className={styles.name_color}>{product.name}</h6>
+                            <h6 className={styles.brand_color}>{product.brand}</h6>
+                            <h6 className={styles.price_color}>{product.price}</h6>
 
-                        <h6 className={styles.name_color}>{product.name}</h6>
-                        <h6 className={styles.brand_color}>{product.brand}</h6>
-                        <h6 className={styles.price_color}>{product.price}</h6>
+                            <div className={styles.pedal_light}>
+                            </div>
 
-                        <div className={styles.pedal_light}>
+                            <div>
+                                <button className={styles.pedal_button}></button>
+                            </div>
                         </div>
-
-                        <div>
-                            <button className={styles.pedal_button}></button>
-                        </div>
-                    </div>
+                    </Link>
 
                 )) : (
                     <p>Loading...</p>
