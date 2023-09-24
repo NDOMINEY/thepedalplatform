@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosReq } from "../api/axiosDefaults";
-import { Form, FormControl, Button } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 import styles from '../styles/ProductList.module.css';
 
 
@@ -49,6 +49,12 @@ const ProductsView = () => {
     return (
         <div className={styles.product_container}>
             <section className={styles.product_filter}>
+
+                <h4>Search and Filter</h4>
+                <hr></hr>
+
+                <p>Select category:</p>
+
                 <Form.Check
                     id={'Octave'}
                     value='Octave'
@@ -86,17 +92,26 @@ const ProductsView = () => {
                     onChange={handleCategory}
                 />
 
+                <hr></hr>
+                <p>Search by name or brand:</p>
+
                 <Form onSubmit={handleSubmit}>
                     <FormControl type="text"
-                        placeholder="Search"
+                        placeholder="Type here..."
                         className="mr-sm-2"
                         value={search}
                         onChange={(event) => setSearch(event.target.value)} />
-                    <Button type="submit">
+                    <button className={styles.btn} type="submit">
                         Search
-                    </Button>
+                    </button>
                 </Form>
             </section>
+
+            <section className={styles.product_title}>
+                <h1>
+                    The Pedal Inventory!
+                </h1>       
+            </section>  
 
             <section className={styles.product_list}>
 
@@ -109,10 +124,16 @@ const ProductsView = () => {
                 }).map((product) => (
 
                     <div className={styles.product_items} key={product.id}>
-                        <div className={styles.product_details}>
-                            <h6>{product.name}</h6>
-                            <h6>{product.brand}</h6>
-                            <h6>{product.price}</h6>
+
+                        <h6 className={styles.name_color}>{product.name}</h6>
+                        <h6 className={styles.brand_color}>{product.brand}</h6>
+                        <h6 className={styles.price_color}>{product.price}</h6>
+
+                        <div className={styles.pedal_light}>
+                        </div>
+
+                        <div>
+                            <button className={styles.pedal_button}></button>
                         </div>
                     </div>
 

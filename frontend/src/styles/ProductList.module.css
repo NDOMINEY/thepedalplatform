@@ -2,32 +2,186 @@
     display: flex;
 }
 
+/* filter styling */
 .product_filter {
-    height: 100vh;
+    height: 100%;
     position: fixed;
     top: 0;
     width: 250px;
     left: 0;
-    padding-top: 95px;
-    padding-right: 0;
+    padding: 260px 20px 20px 20px;
+    background-color: #dedede;
 }
 
+/* page title styling */
+
+.product_title {
+    height: 90px;
+    position: fixed;
+    top: 0;
+    width: auto;
+    left: 260px;
+    background: white;
+    z-index:1;
+    text-align: center;
+    padding: 150px 0px 0px 0px;
+}
+
+.product_title > h1{
+    width: calc(100vw - 270px);
+    background-color: white;
+    padding-bottom: 20px;
+}
+
+/* individual pedal styling */
 .product_list {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     width: auto;
-    margin-left: 250px;
-    margin-top: 56px;
+    margin-left: 260px;
+    margin-top: 165px;
 }
 
 .product_items {
+    position: relative;
     width: 125px;
-    height: 200px;
+    height: 225px;
     margin: 10px;
     text-align: center;
     padding: 10px;
-    box-shadow: 0px 10px 14px -7px #276873;
-    background: linear-gradient(to bottom, #8ac8bc 5%, #75c2b3 100%);
-    background-color: #599bb3;
+    box-shadow: 0px 10px 14px -7px #000000;
+    background-color: rgba(0, 0, 0, 0.80);
+    color: #FFFFFF;
     border-radius: 8px;
+}
+
+/* pedal button styling */
+
+.pedal_button {
+    position: absolute;
+    bottom: 25px;
+    left: 52.5px;
+    background: #C5C9CD;
+    background-image: -webkit-linear-gradient(top, #C5C9CD, #D3D6DA);
+    background-image: -moz-linear-gradient(top, #C5C9CD, #D3D6DA);
+    background-image: -ms-linear-gradient(top, #C5C9CD, #D3D6DA);
+    background-image: -o-linear-gradient(top, #C5C9CD, #D3D6DA);
+    background-image: -webkit-gradient(to bottom, #C5C9CD, #D3D6DA);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    height: 4px;
+    line-height: 4px;
+    color: #FFFFFF;
+    font-family: Brush Script MT;
+    width: 4px;
+    font-size: 0;
+    font-weight: 100;
+    padding: 10px;
+    -webkit-box-shadow: 1px 1px 6px 0 #000000;
+    -moz-box-shadow: 1px 1px 6px 0 #000000;
+    box-shadow: 1px 1px 6px 0 #000000;
+    text-shadow: 1px 1px 20px #000000;
+    border: solid #FFFFFF 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.product_items:hover .pedal_button {
+    border: solid #C3CAD6 1px;
+    background: #C3CAD6;
+    background-image: -webkit-linear-gradient(top, #C3CAD6, #9BA8B7);
+    background-image: -moz-linear-gradient(top, #C3CAD6, #9BA8B7);
+    background-image: -ms-linear-gradient(top, #C3CAD6, #9BA8B7);
+    background-image: -o-linear-gradient(top, #C3CAD6, #9BA8B7);
+    background-image: -webkit-gradient(to bottom, #C3CAD6, #9BA8B7);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+/* pedal font colours */
+
+.price_color{
+    color: #42c6ae;
+        font-weight: bolder;
+
+}
+
+.name_color{
+    color:white;
+    font-weight: bolder;
+}
+
+.brand_color{
+    color:white;
+}
+
+/* pedal light */
+
+.pedal_light {
+    position: absolute;
+    bottom: 60px;
+    left: 57.5px;
+    background: #ffffff46;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    height: 4px;
+    line-height: 4px;
+    color: #FFFFFF;
+    width: 4px;
+    padding: 5px;
+    box-shadow: 1px 1px 6px 0 #000000;
+    border: solid #FFFFFF 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.product_items:hover .pedal_light {
+    border: solid #C3CAD6 1px;
+    background: #e41a1a;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+
+
+/* search button */
+
+.btn {
+    background-color:  rgba(0, 0, 0, 0.80);
+    border-radius: 6px;
+    border: solid black 1px;
+    box-shadow: 1px 1px 6px 0 #000000;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.70);
+    border: solid black 1px;
+}
+
+.btn:active {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.70);
+    border: solid black 1px;
+    top: 1px;
 }
