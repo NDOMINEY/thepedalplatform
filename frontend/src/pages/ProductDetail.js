@@ -8,6 +8,8 @@ import styles from '../styles/ProductDetail.module.css';
 const ProductDetail = () => {
     const { id } = useParams();
     const [pedal, setPedal] = useState({ results: [] });
+    const [hasLoaded, setHasLoaded] = useState(false);
+
 
     useEffect(() => {
         const handleMount = async () => {
@@ -16,12 +18,12 @@ const ProductDetail = () => {
                     axiosReq.get(`/pedal/${id}`),
                 ]);
                 setPedal({ results: [pedal] });
-                console.log(pedal);
+                setHasLoaded(true);
             } catch (err) {
                 console.log(err);
             }
         };
-
+        setHasLoaded(false);
         handleMount();
     }, [id]);
 
@@ -35,7 +37,7 @@ const ProductDetail = () => {
             </section>
 
             <section>
-                {pedal.results.map((product) => (
+                {hasLoaded ? pedal.results.map((product) => (
                     <div className={styles.info_container} key={product.id}>
                         <div className={styles.product_items} >
 
@@ -58,16 +60,23 @@ const ProductDetail = () => {
                             <p>Price: {product.price}</p>
                         </div>
                     </div>
-                ))
-                }
+                )) : (
+                    <div className={styles.review_container}>
+                        <p>Loading...</p>
+                    </div>
+                )}
             </section>
 
             <section>
-                <div className={styles.review_container}>
-                    <h3>
-                        Reviews
-                    </h3>
-                </div>
+                {hasLoaded ? (
+                    <div className={styles.review_container}>
+                        <h3>
+                            Reviews
+                        </h3>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
             </section>
         </>
     );
