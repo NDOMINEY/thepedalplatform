@@ -11,19 +11,19 @@ import "./api/axiosDefaults";
 
 function App() {
     return (
-        <div className={styles.App}>
+        <div>
             <NavBar />
-            <Container className={styles.Content}>
+            <div className={styles.Content}>
                 <Switch>
                     <Route exact path="/" render={() =>
                         <Landing />
                     } />
-                    <Route exact path="/products" render={() => <h1><Products /></h1>} />
+                    <Route exact path="/products" render={() => <Products />} />
                     <Route exact path="/login" render={() => <LoginForm />} />
                     <Route exact path="/register" render={() => <RegisterForm />} />
                     <Route render={() => <p>Page not found!</p>} />
                 </Switch>
-            </Container>
+            </div>
         </div>
     );
 }

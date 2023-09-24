@@ -9,7 +9,10 @@ body {
 }
 
 .Content {
-    margin-top: 80px;
+    position: relative;
+    top: 90px;
+    margin: 0;
+    padding: 0;
 }
 
 a {
