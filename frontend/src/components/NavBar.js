@@ -108,7 +108,7 @@ const NavBar = () => {
                             className="nav-link"
                             onClick={() => setExpanded(false)}
                         >
-                            Products
+                            Pedals
                         </Link>
 
                         {currentUser ? loggedIn : loggedOut}
