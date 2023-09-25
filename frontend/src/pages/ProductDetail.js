@@ -5,19 +5,27 @@ import { axiosReq } from "../api/axiosDefaults";
 import styles from '../styles/ProductDetail.module.css';
 
 
+
 const ProductDetail = () => {
+    // const currentUser = useContext(CurrentUserContext);
+
     const { id } = useParams();
     const [pedal, setPedal] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
+    const [reviews, setReviews] = useState({ results: [] });
+
+    console.log(reviews);
+
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const [{ data: pedal }] = await Promise.all([
+                const [{ data: pedal }, { data: review }] = await Promise.all([
                     axiosReq.get(`/pedal/${id}`),
+                    axiosReq.get(`/review/?pedal=${id}`),
                 ]);
                 setPedal({ results: [pedal] });
-                console.log(pedal);
+                setReviews(review);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err);
@@ -70,15 +78,16 @@ const ProductDetail = () => {
             </section>
 
             <section>
-                {hasLoaded ? (
-                    <div className={styles.review_container}>
-                        <h3>
-                            Reviews
-                        </h3>
+                {hasLoaded ? (reviews.length ? reviews.map((review) => (
+                    <div key={review.id}>
+                        <p>Created: {review.owner}</p>
+                        <p>Created: {review.created_at}</p>
+                        <p>{review.content}</p>
                     </div>
-                ) : (
-                    <div></div>
-                )}
+                )) : (
+                    <p>No Reviews</p>
+                )) : null
+                }
             </section>
         </>
     );

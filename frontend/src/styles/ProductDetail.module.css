@@ -154,9 +154,7 @@
 /* reviews styling */
 
 .review_container {
-    display: flex;
-    flex-wrap: wrap;
-    width: auto;
+    width: 100%;
     padding: 25px 0 0 35px;
 }
 
