@@ -3,7 +3,7 @@ from .models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    pedal = serializers.ReadOnlyField(source='pedal.name')
+    pedal = serializers.ReadOnlyField(source='pedal.id')
 
     class Meta:
         model = Review

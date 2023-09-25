@@ -53,13 +53,6 @@ class PedalList(generics.ListAPIView):
     # search fields
     search_fields = ['brand__brand', 'name']
 
-    # order fields to filter
-    ordering_fields = [
-        'brand__brand',
-        'category',
-        'price',
-    ]
-
 
 class PedalDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PedalSerializer
