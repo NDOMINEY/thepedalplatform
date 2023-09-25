@@ -71,7 +71,7 @@ const ProductDetail = () => {
                         </div>
                     </div>
                 )) : (
-                    <div className={styles.review_container}>
+                    <div className={styles.info_container}>
                         <p>Loading...</p>
                     </div>
                 )}
@@ -79,9 +79,11 @@ const ProductDetail = () => {
 
             <section>
                 {hasLoaded ? (reviews.length ? reviews.map((review) => (
-                    <div key={review.id}>
-                        <p>Created: {review.owner}</p>
-                        <p>Created: {review.created_at}</p>
+                    <div className={styles.review_container} key={review.id}>
+                        <span>Rating: {review.rate}/5</span>
+
+                        <span>User: {review.owner}</span>
+                        <span>Created on: {review.created_at}</span>
                         <p>{review.content}</p>
                     </div>
                 )) : (

@@ -154,8 +154,20 @@
 /* reviews styling */
 
 .review_container {
-    width: 100%;
-    padding: 25px 0 0 35px;
+    width: auto%;
+    padding: 25px;
+    margin: 0 25px 25px 25px;
+    background-color: #dedede;
+    border-radius: 10px;
+}
+
+.review_container>span {
+    font-size: smaller;
+    padding-right: 10px;
+}
+
+.review_container>p {
+    padding-top: 10px;
 }
 
 /* star styling */
