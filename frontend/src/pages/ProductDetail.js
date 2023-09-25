@@ -10,7 +10,6 @@ const ProductDetail = () => {
     const [pedal, setPedal] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
-
     useEffect(() => {
         const handleMount = async () => {
             try {
@@ -18,6 +17,7 @@ const ProductDetail = () => {
                     axiosReq.get(`/pedal/${id}`),
                 ]);
                 setPedal({ results: [pedal] });
+                console.log(pedal);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err);
@@ -58,6 +58,8 @@ const ProductDetail = () => {
                             <p>Brand: {product.brand}</p>
                             <p>Category: {product.category}</p>
                             <p>Price: {product.price}</p>
+                            <p>Average Rating: {product.review_average}/5 </p>
+                            <p>Total Ratings: {product.review_count}</p>
                         </div>
                     </div>
                 )) : (
