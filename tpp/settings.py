@@ -80,6 +80,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'pedals',
+    'reviews',
 ]
 
 SITE_ID = 1
