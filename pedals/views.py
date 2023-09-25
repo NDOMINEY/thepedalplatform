@@ -61,19 +61,10 @@ class PedalList(generics.ListAPIView):
     ]
 
 
-class PedalDetail(APIView):
+class PedalDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PedalSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def get_object(self, pk):
-        try:
-            pedal = Pedal.objects.get(pk=pk)
-            self.check_object_permissions(self.request, pedal)
-            return pedal
-        except Pedal.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk):
-        pedal = self.get_object(pk)
-        serializer = PedalSerializer(pedal, context={'request': request})
-
-        return Response(serializer.data)
+    queryset = Pedal.objects.annotate(
+        review_count=Count('review', distinct=True),
+        review_average=Avg('review__rate', distinct=True))
