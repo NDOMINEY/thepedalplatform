@@ -1,8 +1,10 @@
+from django.db.models import Count, Avg
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status, filters, permissions
 from tpp.permissions import IsOwnerOrReadOnly
+from django.db import models
 from .models import Brands, Pedal
 from .serializers import BrandsSerializer, PedalSerializer
 
@@ -42,7 +44,10 @@ class PedalList(generics.ListAPIView):
     serializer_class = PedalSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    queryset = Pedal.objects.all()
+    queryset = Pedal.objects.annotate(
+        review_count=Count('review', distinct=True),
+        review_average=Avg('review__rate', distinct=True))
+
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
 
     # search fields
