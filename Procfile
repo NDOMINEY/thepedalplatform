@@ -1,1 +1,1 @@
-web: serve - s build
+web: gunicorn M4.wsgi:application
