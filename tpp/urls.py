@@ -15,17 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='index.html')),
+
     path('admin/', admin.site.urls),
-    path('api_auth/', include('rest_framework.urls')),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('api/api_auth/', include('rest_framework.urls')),
+    path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
     path(
-        'dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
+        'api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
     ),
-    path('', include('profiles.urls')),
-    path('', include('pedals.urls')),
-    path('', include('reviews.urls')),
-
-
+    path('api/', include('profiles.urls')),
+    path('api/', include('pedals.urls')),
+    path('api/', include('reviews.urls')),
 ]
+
+handler404 = TemplateView.as_view(template_name='index.html')
