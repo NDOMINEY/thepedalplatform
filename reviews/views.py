@@ -12,7 +12,7 @@ from .serializers import ReviewSerializer
 # Create your views here.
 
 
-class ReviewList(generics.ListAPIView):
+class ReviewList(generics.ListCreateAPIView):
     """
     List all reviews.
     """
@@ -23,6 +23,9 @@ class ReviewList(generics.ListAPIView):
 
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['pedal']
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):

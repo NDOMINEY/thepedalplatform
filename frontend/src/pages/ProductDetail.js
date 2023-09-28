@@ -7,15 +7,12 @@ import styles from '../styles/ProductDetail.module.css';
 
 
 const ProductDetail = () => {
-    // const currentUser = useContext(CurrentUserContext);
 
     const { id } = useParams();
     const [pedal, setPedal] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
     const [reviews, setReviews] = useState({ results: [] });
-
-    console.log(reviews);
 
     useEffect(() => {
         const handleMount = async () => {
