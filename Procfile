@@ -1,1 +1,1 @@
-web: gunicorn tpp.wsgi:application
+web: serve -s build
