@@ -1,1 +1,1 @@
-web: gunicorn M4.wsgi:application
+web: gunicorn tpp.wsgi:application
