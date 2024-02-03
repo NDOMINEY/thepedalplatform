@@ -154,7 +154,7 @@
 /* reviews styling */
 
 .review_container {
-    width: auto%;
+    width: auto;
     padding: 25px;
     margin: 0 25px 25px 25px;
     background-color: #dedede;
@@ -168,6 +168,18 @@
 
 .review_container>p {
     padding-top: 10px;
+}
+
+/* loading styling */
+
+img {
+    max-width: 90%;
+}
+
+.loading_text {
+    margin-top: 10px;
+    color: white;
+    font-weight: bolder;
 }
 
 /* star styling */

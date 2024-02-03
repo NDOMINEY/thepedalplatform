@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { axiosReq } from "../api/axiosDefaults";
 import styles from '../styles/ProductDetail.module.css';
+import loading from '../assets/loading.gif';
 
 
 
@@ -69,7 +70,10 @@ const ProductDetail = () => {
                     </div>
                 )) : (
                     <div className={styles.info_container}>
-                        <p>Loading...</p>
+                        <div className={styles.product_items} >
+                            <p className={styles.loading_text}>Loading</p>
+                            <img src={loading} alt="loading"></img>
+                        </div>
                     </div>
                 )}
             </section>
@@ -84,7 +88,9 @@ const ProductDetail = () => {
                         <p>{review.content}</p>
                     </div>
                 )) : (
-                    <p>No Reviews</p>
+                    <div className={styles.review_container}>
+                        <p>No Reviews</p>
+                    </div>
                 )) : null
                 }
             </section>

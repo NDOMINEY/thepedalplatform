@@ -3,6 +3,8 @@ import { axiosReq } from "../api/axiosDefaults";
 import { Form, FormControl } from "react-bootstrap";
 import styles from '../styles/ProductList.module.css';
 import { Link } from "react-router-dom";
+import loading from '../assets/loading.gif';
+
 
 
 
@@ -140,7 +142,10 @@ const ProductsView = () => {
                     </Link>
 
                 )) : (
-                    <p>Loading...</p>
+                    <div className={styles.product_items} >
+                        <p className={styles.loading_text}>Loading</p>
+                        <img src={loading} alt="loading"></img>
+                    </div>
                 )}
             </section>
         </div>

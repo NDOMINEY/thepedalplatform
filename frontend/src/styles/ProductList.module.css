@@ -39,7 +39,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: auto;
+    width: 100%;
     margin-left: 260px;
     margin-top: 165px;
 }
@@ -182,4 +182,16 @@
     background-color: rgba(0, 0, 0, 0.70);
     border: solid black 1px;
     top: 1px;
+}
+
+/* loading styling */
+
+img {
+    max-width: 90%;
+}
+
+.loading_text {
+    margin-top: 10px;
+    color: white;
+    font-weight: bolder;
 }
