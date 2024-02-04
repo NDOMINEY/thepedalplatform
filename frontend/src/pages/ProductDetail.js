@@ -179,7 +179,7 @@ const ProductDetail = () => {
 
             <section>
                 {hasLoaded ? (reviews.length ? reviews.map((review) => (
-                    < ReviewDisplay id={review.id} rate={review.rate}
+                    < ReviewDisplay key={review.id} id={review.id} rate={review.rate}
                         owner={review.owner} created_at={review.created_at}
                         content={review.content} is_owner={review.is_owner} />
                 )) : (
