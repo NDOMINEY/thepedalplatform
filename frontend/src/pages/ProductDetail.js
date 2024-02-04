@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { axiosReq } from "../api/axiosDefaults";
+import axios from 'axios';
+import { Form, Button, Alert } from "react-bootstrap";
 import styles from '../styles/ProductDetail.module.css';
 import loading from '../assets/loading.gif';
 
@@ -10,7 +12,7 @@ import loading from '../assets/loading.gif';
 const ProductDetail = () => {
 
     const { id } = useParams();
-    const [pedal, setPedal] = useState({ results: [] });
+    const [pedalDetail, setPedal] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
     const [reviews, setReviews] = useState({ results: [] });
@@ -18,11 +20,11 @@ const ProductDetail = () => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const [{ data: pedal }, { data: review }] = await Promise.all([
+                const [{ data: pedalDetail }, { data: review }] = await Promise.all([
                     axiosReq.get(`/pedal/${id}`),
                     axiosReq.get(`/review/?pedal=${id}`),
                 ]);
-                setPedal({ results: [pedal] });
+                setPedal({ results: [pedalDetail] });
                 setReviews(review);
                 setHasLoaded(true);
             } catch (err) {
@@ -33,8 +35,61 @@ const ProductDetail = () => {
         handleMount();
     }, [id]);
 
+    // Review form data handling
+
+    const [reviewData, setReviewData] = useState({
+        pedal: id,
+        content: '',
+        rate: '',
+    });
+
+
+    const [message, setMessage] = useState();
+
+    const { content, rate } = reviewData;
+
+    const handleChange = (event) => setReviewData({
+        ...reviewData,
+        [event.target.name]: event.target.value
+    });
+
+    const [errors, setErrors] = useState({});
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await axios.post("/review/", reviewData);
+            setReviewData(reviewData => ({
+                ...reviewData,
+                content: '',
+                rate: '',
+            }));
+
+            try {
+                const [{ data: review }] = await Promise.all([
+                    axiosReq.get(`/review/?pedal=${id}`),
+                ]);
+                setReviews(review);
+                setMessage("Review added!");
+                console.log(message);
+
+
+            } catch (err) {
+                console.log(err);
+            }
+        } catch (err) {
+            setErrors(err.response?.data);
+        }
+    };
+
+
     return (
         <>
+            {message ?
+                <Alert variant="info" >
+                    {message}
+                </Alert> : null}
+
             <section>
                 <Link to="/products">
                     <button className={styles.btn}>
@@ -43,7 +98,7 @@ const ProductDetail = () => {
             </section>
 
             <section>
-                {hasLoaded ? pedal.results.map((product) => (
+                {hasLoaded ? pedalDetail.results.map((product) => (
                     <div className={styles.info_container} key={product.id}>
                         <div className={styles.product_items} >
 
@@ -77,6 +132,49 @@ const ProductDetail = () => {
                     </div>
                 )}
             </section>
+
+            <section>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group className="mb-3" controlId="content">
+                        <Form.Label>Review</Form.Label>
+                        <Form.Control
+                            type="textarea"
+                            placeholder="Please detail your review here."
+                            name='content'
+                            value={content}
+                            onChange={handleChange} />
+                    </Form.Group>
+                    {errors.review_comments?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
+                    <Form.Group className="mb-3" controlId="rate">
+                        <Form.Label>Rating (1 to 5)</Form.Label>
+                        <Form.Control
+                            type="number"
+                            maxLength="10"
+                            placeholder="5"
+                            name="rate"
+                            value={rate}
+                            onChange={handleChange} />
+                    </Form.Group>
+                    {errors.rating?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                    {errors.non_field_errors?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
+                </Form>
+            </section>
+
 
             <section>
                 {hasLoaded ? (reviews.length ? reviews.map((review) => (
