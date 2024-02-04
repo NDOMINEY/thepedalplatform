@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Form, Button, Alert } from "react-bootstrap";
 import styles from '../styles/ProductDetail.module.css';
 import loading from '../assets/loading.gif';
+import ReviewDisplay from '../components/ReviewDisplay';
 
 
 
@@ -178,13 +179,9 @@ const ProductDetail = () => {
 
             <section>
                 {hasLoaded ? (reviews.length ? reviews.map((review) => (
-                    <div className={styles.review_container} key={review.id}>
-                        <span>Rating: {review.rate}/5</span>
-
-                        <span>User: {review.owner}</span>
-                        <span>Created on: {review.created_at}</span>
-                        <p>{review.content}</p>
-                    </div>
+                    < ReviewDisplay id={review.id} rate={review.rate}
+                        owner={review.owner} created_at={review.created_at}
+                        content={review.content} is_owner={review.is_owner} />
                 )) : (
                     <div className={styles.review_container}>
                         <p>No Reviews</p>
