@@ -127,10 +127,23 @@ const ProductDetail = () => {
                             <p>Average Rating: {product.review_average}/5 </p>
                             <p>Total Ratings: {product.review_count}</p>
                         </div>
+                    </div>
+                )) : (
+                    <div className={styles.info_container}>
+                        <div className={styles.product_items} >
+                            <p className={styles.loading_text}>Loading</p>
+                            <img src={loading} alt="loading"></img>
+                        </div>
+                    </div>
+                )}
+            </section>
 
-                        <Form onSubmit={handleSubmit}>
+            <section>
+                {hasLoaded && currentUser ?
+                    <>
+                        < Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="content">
-                                <Form.Label>Review</Form.Label>
+                                <Form.Label>Please leave a review:</Form.Label>
                                 <Form.Control
                                     type="textarea"
                                     placeholder="Please detail your review here."
@@ -158,7 +171,7 @@ const ProductDetail = () => {
                                     {message}
                                 </Alert>
                             ))}
-                            <Button variant="primary" type="submit">
+                            <Button className={styles.btn_review} variant="primary" type="submit">
                                 Submit
                             </Button>
                             {errors.non_field_errors?.map((message, idx) => (
@@ -167,15 +180,16 @@ const ProductDetail = () => {
                                 </Alert>
                             ))}
                         </Form>
-                    </div>
-                )) : (
-                    <div className={styles.info_container}>
-                        <div className={styles.product_items} >
-                            <p className={styles.loading_text}>Loading</p>
-                            <img src={loading} alt="loading"></img>
-                        </div>
-                    </div>
-                )}
+                    </>
+                    : hasLoaded ?
+                        <>
+                            <div className={styles.info_container}>
+                                <p>Please login to leave a review &rarr;</p>
+                                <Link className={styles.login_link} to="/login">
+                                    Login
+                                </Link>
+                            </div>
+                        </> : null}
             </section>
 
             <section>
