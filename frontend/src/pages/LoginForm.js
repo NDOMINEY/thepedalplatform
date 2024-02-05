@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Col, Row, Container, Form, Button, Alert } from "react-bootstrap";
 import axios from 'axios';
+import styles from '../styles/ProductDetail.module.css';
+
 import { SetCurrentUserContext } from "../contexts/CurrentUserContext";
 
 
@@ -68,7 +70,7 @@ const LoginForm = () => {
                                 {message}
                             </Alert>
                         ))}
-                        <Button variant="primary" type="submit">
+                        <Button className={styles.btn_review} type="submit">
                             Login
                         </Button>
                         {errors.non_field_errors?.map((message, idx) => (

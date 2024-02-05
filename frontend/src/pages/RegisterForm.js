@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Col, Row, Container, Form, Button, Alert } from "react-bootstrap";
 import axios from 'axios';
+import styles from '../styles/ProductDetail.module.css';
+
 
 const RegisterForm = () => {
     const [registerData, setRegisterData] = useState({
@@ -78,7 +80,7 @@ const RegisterForm = () => {
                                 {message}
                             </Alert>
                         ))}
-                        <Button variant="primary" type="submit">
+                        <Button className={styles.btn_review} variant="primary" type="submit">
                             Submit
                         </Button>
                         {errors.non_field_errors?.map((message, idx) => (

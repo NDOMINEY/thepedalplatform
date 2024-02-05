@@ -45,8 +45,8 @@ function ReviewDisplay(props) {
 
             {props.is_owner ?
                 <>
-                    <button>Edit</button>
-                    <button onClick={DeleteModal}>Delete</button>
+                    <button className={styles.btn_review}>Edit</button>
+                    <button className={styles.btn_review} onClick={DeleteModal}>Delete</button>
                 </> : null}
 
             <p>{props.content}</p>

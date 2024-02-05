@@ -171,7 +171,7 @@ const ProductDetail = () => {
                                     {message}
                                 </Alert>
                             ))}
-                            <Button className={styles.btn_review} variant="primary" type="submit">
+                            <Button className={styles.btn_review} type="submit">
                                 Submit
                             </Button>
                             {errors.non_field_errors?.map((message, idx) => (

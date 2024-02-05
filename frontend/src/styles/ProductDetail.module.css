@@ -220,13 +220,12 @@ form {
     border: solid black 1px;
 }
 
-.btn_review:active {
+.btn_review:active,
+.btn_review:focus {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.70);
-    border: solid black 1px;
-    top: 1px;
+    background-color: rgba(0, 0, 0, 0.70) !important;
+    border: solid black 1px !important;
+    top: 1px !important;
 }
-
-
 
 /* star styling */
