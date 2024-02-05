@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { axiosReq } from "../api/axiosDefaults";
@@ -7,6 +7,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import styles from '../styles/ProductDetail.module.css';
 import loading from '../assets/loading.gif';
 import ReviewDisplay from '../components/ReviewDisplay';
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 
 
@@ -15,6 +16,8 @@ const ProductDetail = () => {
     const { id } = useParams();
     const [pedalDetail, setPedal] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
+    const currentUser = useContext(CurrentUserContext);
+
 
     const [reviews, setReviews] = useState({ results: [] });
 
@@ -72,6 +75,7 @@ const ProductDetail = () => {
                 ]);
                 setReviews(review);
                 setMessage("Review added!");
+                setHasLoaded(false);
                 console.log(message);
 
 
@@ -123,6 +127,46 @@ const ProductDetail = () => {
                             <p>Average Rating: {product.review_average}/5 </p>
                             <p>Total Ratings: {product.review_count}</p>
                         </div>
+
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group className="mb-3" controlId="content">
+                                <Form.Label>Review</Form.Label>
+                                <Form.Control
+                                    type="textarea"
+                                    placeholder="Please detail your review here."
+                                    name='content'
+                                    value={content}
+                                    onChange={handleChange} />
+                            </Form.Group>
+                            {errors.review_comments?.map((message, idx) => (
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
+                            ))}
+                            <Form.Group className="mb-3" controlId="rate">
+                                <Form.Label>Rating (1 to 5)</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    maxLength="10"
+                                    placeholder="5"
+                                    name="rate"
+                                    value={rate}
+                                    onChange={handleChange} />
+                            </Form.Group>
+                            {errors.rating?.map((message, idx) => (
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
+                            ))}
+                            <Button variant="primary" type="submit">
+                                Submit
+                            </Button>
+                            {errors.non_field_errors?.map((message, idx) => (
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
+                            ))}
+                        </Form>
                     </div>
                 )) : (
                     <div className={styles.info_container}>
@@ -135,53 +179,11 @@ const ProductDetail = () => {
             </section>
 
             <section>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="content">
-                        <Form.Label>Review</Form.Label>
-                        <Form.Control
-                            type="textarea"
-                            placeholder="Please detail your review here."
-                            name='content'
-                            value={content}
-                            onChange={handleChange} />
-                    </Form.Group>
-                    {errors.review_comments?.map((message, idx) => (
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                    ))}
-                    <Form.Group className="mb-3" controlId="rate">
-                        <Form.Label>Rating (1 to 5)</Form.Label>
-                        <Form.Control
-                            type="number"
-                            maxLength="10"
-                            placeholder="5"
-                            name="rate"
-                            value={rate}
-                            onChange={handleChange} />
-                    </Form.Group>
-                    {errors.rating?.map((message, idx) => (
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                    ))}
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                    {errors.non_field_errors?.map((message, idx) => (
-                        <Alert variant="warning" key={idx}>
-                            {message}
-                        </Alert>
-                    ))}
-                </Form>
-            </section>
-
-
-            <section>
                 {hasLoaded ? (reviews.length ? reviews.map((review) => (
                     < ReviewDisplay key={review.id} id={review.id} rate={review.rate}
                         owner={review.owner} created_at={review.created_at}
-                        content={review.content} is_owner={review.is_owner} />
+                        content={review.content} is_owner={review.is_owner}
+                        setHasLoaded={setHasLoaded} setMessage={setMessage} />
                 )) : (
                     <div className={styles.review_container}>
                         <p>No Reviews</p>

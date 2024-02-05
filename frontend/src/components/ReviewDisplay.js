@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import styles from '../styles/ProductDetail.module.css';
 import { Modal, Button } from "react-bootstrap";
+import axios from 'axios';
+import { Alert } from "react-bootstrap";
+
 
 
 
 function ReviewDisplay(props) {
 
     const [modalStatus, setModalStatus] = useState(false);
+    const [errors, setErrors] = useState({});
+
+    const setHasLoaded = props.setHasLoaded;
+    const setMessage = props.setMessage;
 
 
     // Modal for delete confirmation pop up
@@ -14,6 +21,20 @@ function ReviewDisplay(props) {
     function DeleteModal() {
         setModalStatus(modalStatus => !modalStatus);
     }
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`/review/${props.id}`);
+            setMessage("Review deleted");
+            setHasLoaded(false);
+
+        } catch (err) {
+            setErrors(err.response?.data);
+        }
+
+        DeleteModal();
+
+    };
 
     return (
         < div className={styles.review_container} key={props.id} >
@@ -47,11 +68,17 @@ function ReviewDisplay(props) {
 
                             <Modal.Footer>
                                 <Button onClick={DeleteModal} variant="secondary">Cancel</Button>
-                                <Button variant="primary">Delete</Button>
+                                <Button onClick={handleDelete} variant="primary">Delete</Button>
                             </Modal.Footer>
                         </Modal.Dialog>
                     </div>
                 </> : null}
+
+            {errors.review_comments?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            ))}
         </div>
 
     );
