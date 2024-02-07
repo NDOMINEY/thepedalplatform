@@ -197,7 +197,8 @@ const ProductDetail = () => {
                     < ReviewDisplay key={review.id} id={review.id} rate={review.rate}
                         owner={review.owner} created_at={review.created_at}
                         content={review.content} is_owner={review.is_owner}
-                        setHasLoaded={setHasLoaded} setMessage={setMessage} />
+                        setHasLoaded={setHasLoaded} setMessage={setMessage}
+                        setReviews={setReviews} />
                 )) : (
                     <div className={styles.review_container}>
                         <p>No Reviews</p>
