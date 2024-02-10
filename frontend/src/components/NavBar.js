@@ -14,6 +14,11 @@ const NavBar = () => {
 
     const currentUser = useContext(CurrentUserContext);
     const setCurrentUser = useContext(SetCurrentUserContext);
+    var profile_id;
+
+    if (currentUser){
+        profile_id=currentUser.profile_id;
+    };
 
     const handleLogout = async () => {
         try {
@@ -30,7 +35,7 @@ const NavBar = () => {
             <NavDropdown title="My Account" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                     <Link
-                        to="/profile"
+                        to={`/profile/${profile_id}`}
                         className="nav-link"
                         onClick={() => setExpanded(false)}
                     >
