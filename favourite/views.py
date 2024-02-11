@@ -32,4 +32,4 @@ class FavouriteDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FavouriteSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    queryset = Review.objects.all()
+    queryset = Favourite.objects.all()
