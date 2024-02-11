@@ -18,22 +18,27 @@ const ProductDetail = () => {
 
   const [reviews, setReviews] = useState({ results: [] });
   const [favouriteData, setFavouriteData] = useState(null);
-
-  console.log(userID);
-  console.log(favouriteData);
+  //const favouriteID;
+  // console.log(userID);
+  console.log(favouriteData[0]);
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: pedalDetail }, { data: review }, { data: favourite }] =
-          await Promise.all([
-            axiosReq.get(`/pedal/${id}`),
-            axiosReq.get(`/review/?pedal=${id}`),
-            axiosReq.get(`/favourite/?pedal=${id}&owner=${userID}`),
-          ]);
+        const [{ data: pedalDetail }, { data: review }] = await Promise.all([
+          axiosReq.get(`/pedal/${id}`),
+          axiosReq.get(`/review/?pedal=${id}`),
+        ]);
+
         setPedal({ results: [pedalDetail] });
         setReviews(review);
-        setFavouriteData(favourite);
+
+        const { data } = await axiosReq.get(
+          `/favourite/?pedal=${id}&owner=${userID}`
+        );
+
+        setFavouriteData(data);
+
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -60,6 +65,28 @@ const ProductDetail = () => {
       ...reviewData,
       [event.target.name]: event.target.value,
     });
+
+  // removing and adding favourite function
+
+  const handleRemoveFavourite = async (event) => {
+    const favouriteId = favouriteData[0].id;
+
+    try {
+      await axios.delete(`/favourite/${favouriteId}`);
+
+      try {
+        const { data } = await axiosReq.get(
+          `/favourite/?pedal=${id}&owner=${userID}`
+        );
+
+        setFavouriteData(data);
+      } catch (err) {
+        console.log(err);
+      }
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
 
   const [errors, setErrors] = useState({});
 
@@ -132,6 +159,30 @@ const ProductDetail = () => {
             </div>
           </div>
         )}
+      </section>
+
+      <section>
+        {hasLoaded ? (
+          <>
+            {favouriteData ? (
+              <>
+                <button
+                  onClick={handleRemoveFavourite}
+                  id={styles.favourite_star}
+                  className={styles.btn}
+                >
+                  &#9733; Favourite!
+                </button>
+              </>
+            ) : (
+              <>
+                <button id={styles.unfavourite_star} className={styles.btn}>
+                  &#9734; Favourite?
+                </button>
+              </>
+            )}
+          </>
+        ) : null}
       </section>
 
       <section>

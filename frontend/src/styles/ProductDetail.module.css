@@ -228,3 +228,12 @@ img {
 }
 
 /* star styling */
+
+#favourite_star {
+  margin-bottom: 25px;
+  color: yellow;
+}
+
+#unfavourite_star {
+  margin-bottom: 25px;
+}
