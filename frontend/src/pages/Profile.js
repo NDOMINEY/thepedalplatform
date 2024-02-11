@@ -70,6 +70,7 @@ const Profile = () => {
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}`, formData);
+      setMessage("Profile Updated!");
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -78,50 +79,43 @@ const Profile = () => {
 
   return (
     <div>
+      {message ? <Alert variant="info">{message}</Alert> : null}
+
       {hasLoaded ? (
         <>
-          <Container>
-            <Row xs={2} md={4} lg={6}>
-              <Col>1 of 3</Col>
-            </Row>
-          </Container>
-
           <Form onSubmit={handleEdit}>
-            <Row>
-              <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
-                <Container>
-                  <Form.Group>
-                    <figure>
-                      <Image src={editProfile.picture} fluid />
-                    </figure>
-                    <div>
-                      <Form.Label htmlFor="image-upload">
-                        Change the image
-                      </Form.Label>
-                    </div>
-                    <Form.File
-                      id="picture-upload"
-                      ref={imageFile}
-                      accept="picture/*"
-                      onChange={(e) => {
-                        if (e.target.files.length) {
-                          setEditProfile({
-                            ...setEditProfile,
-                            picture: URL.createObjectURL(e.target.files[0]),
-                          });
-                        }
-                      }}
-                    />
-                  </Form.Group>
-                  {errors?.content?.map((message, idx) => (
-                    <Alert variant="warning" key={idx}>
-                      {message}
-                    </Alert>
-                  ))}
-                  <Button type="submit">Save</Button>
-                </Container>
-              </Col>
-            </Row>
+            <Container>
+              <h1>My Profile</h1>
+              <Form.Group>
+                <figure>
+                  <Image src={editProfile.picture} roundedCircle />
+                </figure>
+                <div>
+                  <Form.Label htmlFor="image-upload">
+                    Change the image
+                  </Form.Label>
+                </div>
+                <Form.File
+                  id="picture-upload"
+                  ref={imageFile}
+                  accept="picture/*"
+                  onChange={(e) => {
+                    if (e.target.files.length) {
+                      setEditProfile({
+                        ...setEditProfile,
+                        picture: URL.createObjectURL(e.target.files[0]),
+                      });
+                    }
+                  }}
+                />
+              </Form.Group>
+              {errors?.content?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
+              <Button type="submit">Save</Button>
+            </Container>
           </Form>
         </>
       ) : (
