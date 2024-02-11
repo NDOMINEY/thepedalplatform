@@ -25,21 +25,14 @@ const Profile = () => {
   const imageFile = useRef();
   const [editProfile, setEditProfile] = useState(null);
 
-  console.log(profileData);
-
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const { data } = await axiosReq.get(`/profiles/${id}`);
         var { name, about, picture } = data;
 
-        console.log(data);
-        console.log(name);
-        console.log(about);
-        console.log(picture);
-
         setProfileData({ name, about, picture });
-        setEditProfile({ name, about, picture });
+        setEditProfile({ name, about });
 
         setHasLoaded(true);
       } catch (err) {
@@ -57,12 +50,10 @@ const Profile = () => {
     });
   };
 
-  const handleEdit = async (event) => {
+  const handleProfileImageSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("name", editProfile.name);
-    formData.append("about", editProfile.about);
 
     if (imageFile?.current?.files[0]) {
       formData.append("picture", imageFile?.current?.files[0]);
@@ -70,9 +61,33 @@ const Profile = () => {
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}`, formData);
+
+      try {
+        const { data } = await axiosReq.get(`/profiles/${id}`);
+        var { name, about, picture } = data;
+
+        setProfileData({ name, about, picture });
+        setEditProfile({ name, about });
+
+        setHasLoaded(true);
+      } catch (err) {
+        console.log(err);
+      }
+
       setMessage("Profile Updated!");
     } catch (err) {
       console.log(err);
+      setErrors(err.response?.data);
+    }
+  };
+
+  const handleTextSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      await axios.put(`/profiles/${id}`, editProfile);
+      setMessage("Profile updated");
+    } catch (err) {
       setErrors(err.response?.data);
     }
   };
@@ -83,44 +98,118 @@ const Profile = () => {
 
       {hasLoaded ? (
         <>
-          <Form onSubmit={handleEdit}>
-            <Container>
+          <section className={styles.content_container}>
+            <Container className={styles.info_container}>
               <h1>My Profile</h1>
-              <Form.Group>
-                <figure>
-                  <Image src={editProfile.picture} roundedCircle />
-                </figure>
-                <div>
-                  <Form.Label htmlFor="image-upload">
-                    Change the image
-                  </Form.Label>
-                </div>
-                <Form.File
-                  id="picture-upload"
-                  ref={imageFile}
-                  accept="picture/*"
-                  onChange={(e) => {
-                    if (e.target.files.length) {
-                      setEditProfile({
-                        ...setEditProfile,
-                        picture: URL.createObjectURL(e.target.files[0]),
-                      });
-                    }
-                  }}
-                />
-              </Form.Group>
-              {errors?.content?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-              <Button type="submit">Save</Button>
+              <Row>
+                <Col sm={12} md={6} lg={4} className={styles.profiletext_edit}>
+                  <Form onSubmit={handleProfileImageSubmit}>
+                    <Form.Group>
+                      <figure id={styles.profile_edit_img}>
+                        <Image
+                          id={styles.profile_img_sizing}
+                          src={profileData.picture}
+                          width="250"
+                          heigth="250"
+                          roundedCircle
+                        />
+                      </figure>
+
+                      <Form.Label htmlFor="picture-upload">
+                        Change profile image
+                      </Form.Label>
+                      <Form.Control
+                        type="file"
+                        size="sm"
+                        id="picture-upload"
+                        ref={imageFile}
+                        accept="picture/*"
+                        onChange={(e) => {
+                          if (e.target.files.length) {
+                            setEditProfile({
+                              ...setEditProfile,
+                              picture: URL.createObjectURL(e.target.files[0]),
+                            });
+                          }
+                        }}
+                      />
+                    </Form.Group>
+                    <Button className={styles.btn_profile} type="submit">
+                      Update Image
+                    </Button>
+                  </Form>
+                </Col>
+
+                <Col className={styles.profiletext_edit}>
+                  <Form onSubmit={handleTextSubmit}>
+                    <Form.Group>
+                      <Form.Label>Name:</Form.Label>
+
+                      {editProfile.name === "undefined" ? (
+                        <>
+                          <Form.Control
+                            type="textarea"
+                            placeholder="Please add your name here"
+                            name="name"
+                            onChange={handleChange}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <Form.Control
+                            type="textarea"
+                            placeholder="Please add your name here."
+                            name="name"
+                            value={editProfile.name}
+                            onChange={handleChange}
+                          />
+                        </>
+                      )}
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label>About:</Form.Label>
+
+                      {editProfile.about === "undefined" ? (
+                        <>
+                          <Form.Control
+                            id={styles.about_input}
+                            as="textarea"
+                            placeholder="Please add a little about yourself here"
+                            name="about"
+                            onChange={handleChange}
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <Form.Control
+                            id={styles.about_input}
+                            as="textarea"
+                            placeholder="Please add a little about yourself here"
+                            name="about"
+                            value={editProfile.about}
+                            onChange={handleChange}
+                          />
+                        </>
+                      )}
+                    </Form.Group>
+
+                    {errors?.name?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                    ))}
+                    <Button className={styles.btn_profile} type="submit">
+                      Update Profile
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
             </Container>
-          </Form>
+          </section>
         </>
       ) : (
         <>
-          <div className={styles.profile_container}>
+          <div className={styles.content_container}>
             <p>Loading</p>
             <img src={loading} alt="loading"></img>
           </div>
