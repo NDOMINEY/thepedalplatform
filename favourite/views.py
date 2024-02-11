@@ -22,7 +22,7 @@ class FavouriteList(generics.ListCreateAPIView):
     queryset = Favourite.objects.all()
 
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['pedal']
+    filterset_fields = ['pedal','owner']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
