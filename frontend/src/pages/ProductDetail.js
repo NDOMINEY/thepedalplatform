@@ -14,18 +14,26 @@ const ProductDetail = () => {
   const [pedalDetail, setPedal] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useContext(CurrentUserContext);
+  const userID = currentUser.pk;
 
   const [reviews, setReviews] = useState({ results: [] });
+  const [favouriteData, setFavouriteData] = useState(null);
+
+  console.log(userID);
+  console.log(favouriteData);
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: pedalDetail }, { data: review }] = await Promise.all([
-          axiosReq.get(`/pedal/${id}`),
-          axiosReq.get(`/review/?pedal=${id}`),
-        ]);
+        const [{ data: pedalDetail }, { data: review }, { data: favourite }] =
+          await Promise.all([
+            axiosReq.get(`/pedal/${id}`),
+            axiosReq.get(`/review/?pedal=${id}`),
+            axiosReq.get(`/favourite/?pedal=${id}&owner=${userID}`),
+          ]);
         setPedal({ results: [pedalDetail] });
         setReviews(review);
+        setFavouriteData(favourite);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -33,7 +41,7 @@ const ProductDetail = () => {
     };
     setHasLoaded(false);
     handleMount();
-  }, [id]);
+  }, [id, userID]);
 
   // Review form data handling
 
