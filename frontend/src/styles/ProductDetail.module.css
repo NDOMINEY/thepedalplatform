@@ -193,7 +193,7 @@ img {
   font-weight: bold;
 }
 
-form {
+.review_form {
   width: auto;
   padding: 25px;
   margin: 0 25px 25px 25px;

@@ -60,7 +60,7 @@ const Profile = () => {
     }
 
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}`, formData);
+      await axiosReq.put(`/profiles/${id}`, formData);
 
       try {
         const { data } = await axiosReq.get(`/profiles/${id}`);
@@ -75,6 +75,7 @@ const Profile = () => {
       }
 
       setMessage("Profile Updated!");
+      window.scrollTo(0, 0);
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -87,6 +88,7 @@ const Profile = () => {
     try {
       await axios.put(`/profiles/${id}`, editProfile);
       setMessage("Profile updated");
+      window.scrollTo(0, 0);
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -109,14 +111,14 @@ const Profile = () => {
                         <Image
                           id={styles.profile_img_sizing}
                           src={profileData.picture}
-                          width="250"
-                          heigth="250"
+                          width="200"
+                          heigth="200"
                           roundedCircle
                         />
                       </figure>
 
                       <Form.Label htmlFor="picture-upload">
-                        Change profile image
+                        Change profile image:
                       </Form.Label>
                       <Form.Control
                         type="file"

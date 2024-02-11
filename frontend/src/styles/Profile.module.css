@@ -1,19 +1,20 @@
 .content_container {
-  width: 100%;
   text-align: center;
   padding: 25px 0 0 0;
+  width: 100;
+  padding: 25px;
+  margin: 25px;
+  background-color: #dedede;
+  border-radius: 10px;
 }
 
 .profiletext_edit {
+  padding: 25px 0 0 0;
   text-align: left;
 }
 
 #about_input {
   height: 150px;
-}
-
-#profile_edit_img {
-  text-align: center;
 }
 
 /* button styling */
@@ -44,10 +45,12 @@
   top: 1px !important;
 }
 
+/* profile image styling */
+
 #profile_img_sizing {
   object-fit: cover;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 }
 
 /* media queries styling */
@@ -55,11 +58,5 @@
 @media (width <= 767px) {
   .profile_edit_img {
     text-align: center;
-  }
-
-  #profile_img_sizing {
-    object-fit: cover;
-    width: 200px;
-    height: 200px;
   }
 }
