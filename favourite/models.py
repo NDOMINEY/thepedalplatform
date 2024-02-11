@@ -20,4 +20,4 @@ class Favourite(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return self.pedal
+        return f"{self.owner}'s favourite pedal {self.pedal}"
