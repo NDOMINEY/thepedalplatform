@@ -72,7 +72,6 @@ const ProductDetail = () => {
         setReviews(review);
         setMessage("Review added!");
         setHasLoaded(false);
-        console.log(message);
       } catch (err) {
         console.log(err);
       }
