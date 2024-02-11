@@ -17,10 +17,7 @@ const ProductDetail = () => {
   const userID = currentUser.pk;
 
   const [reviews, setReviews] = useState({ results: [] });
-  const [favouriteData, setFavouriteData] = useState(null);
-  //const favouriteID;
-  // console.log(userID);
-  console.log(favouriteData[0]);
+  const [favouriteData, setFavouriteData] = useState(false);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -37,7 +34,11 @@ const ProductDetail = () => {
           `/favourite/?pedal=${id}&owner=${userID}`
         );
 
-        setFavouriteData(data);
+        if (Object.keys(data).length === 1) {
+          setFavouriteData(data);
+        } else {
+          setFavouriteData(false);
+        }
 
         setHasLoaded(true);
       } catch (err) {
@@ -66,28 +67,6 @@ const ProductDetail = () => {
       [event.target.name]: event.target.value,
     });
 
-  // removing and adding favourite function
-
-  const handleRemoveFavourite = async (event) => {
-    const favouriteId = favouriteData[0].id;
-
-    try {
-      await axios.delete(`/favourite/${favouriteId}`);
-
-      try {
-        const { data } = await axiosReq.get(
-          `/favourite/?pedal=${id}&owner=${userID}`
-        );
-
-        setFavouriteData(data);
-      } catch (err) {
-        console.log(err);
-      }
-    } catch (err) {
-      setErrors(err.response?.data);
-    }
-  };
-
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async (event) => {
@@ -107,6 +86,59 @@ const ProductDetail = () => {
         setReviews(review);
         setMessage("Review added!");
         setHasLoaded(false);
+      } catch (err) {
+        console.log(err);
+      }
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
+
+  // removing and adding favourite function
+
+  const handleRemoveFavourite = async (event) => {
+    const favouriteId = favouriteData[0].id;
+
+    try {
+      await axios.delete(`/favourite/${favouriteId}`);
+
+      try {
+        const { data } = await axiosReq.get(
+          `/favourite/?pedal=${id}&owner=${userID}`
+        );
+
+        if (Object.keys(data).length === 1) {
+          setFavouriteData(data);
+        } else {
+          setFavouriteData(false);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
+  };
+
+  const handleAddFavourite = async (event) => {
+    event.preventDefault();
+
+    const favourite = {
+      pedal: id,
+    };
+
+    try {
+      await axios.post("/favourite/", favourite);
+      try {
+        const { data } = await axiosReq.get(
+          `/favourite/?pedal=${id}&owner=${userID}`
+        );
+
+        if (Object.keys(data).length === 1) {
+          setFavouriteData(data);
+        } else {
+          setFavouriteData(false);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -176,7 +208,11 @@ const ProductDetail = () => {
               </>
             ) : (
               <>
-                <button id={styles.unfavourite_star} className={styles.btn}>
+                <button
+                  onClick={handleAddFavourite}
+                  id={styles.unfavourite_star}
+                  className={styles.btn}
+                >
                   &#9734; Favourite?
                 </button>
               </>
