@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { axiosReq } from "../api/axiosDefaults";
 import loading from "../assets/loading.gif";
+import styles from "../styles/Profile.module.css";
 import ProductDisplay from "../components/ProductDisplay";
 
 const Favourite = () => {
@@ -28,23 +29,26 @@ const Favourite = () => {
 
   return (
     <div>
-      <section>
-        {hasLoaded ? (
-          favouriteData.length ? (
-            favouriteData.map((favourite) => (
-              <ProductDisplay id={favourite.pedal} />
-            ))
+      <section className={styles.content_container}>
+        <h1>Your Favourites</h1>
+        <div className={styles.favourite_list}>
+          {hasLoaded ? (
+            favouriteData.length ? (
+              favouriteData.map((favourite) => (
+                <ProductDisplay id={favourite.pedal} />
+              ))
+            ) : (
+              <div>
+                <p>No Favourites</p>
+              </div>
+            )
           ) : (
             <div>
-              <p>No Favourites</p>
+              <p>Loading</p>
+              <img src={loading} alt="loading"></img>
             </div>
-          )
-        ) : (
-          <div>
-            <p>Loading</p>
-            <img src={loading} alt="loading"></img>
-          </div>
-        )}
+          )}
+        </div>
       </section>
     </div>
   );
