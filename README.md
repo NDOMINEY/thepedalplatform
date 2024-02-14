@@ -6,7 +6,7 @@ This database allows visitors to view reviews and ratings of their desired pedal
 
 The targeted audience is all who have a love of pedals and applying effects to their musical instruments be that guitars, keyboards, or drums.
 
-![Landing Page](documentation/landing-page.png)
+![Landing Page](documentation/landing_page.png)
 
 Live Site - [The Pedal Platform](https://thepedalplatform-554a254bc88a.herokuapp.com/) <br>
 Project Repository - [The Pedal Platform - Repository](https://github.com/NDOMINEY/thepedalplatform)
