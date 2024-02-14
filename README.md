@@ -1,39 +1,158 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The Pedal Platform
 
-Welcome,
+The Pedal Platform is an online resource for all lovers of Pedals. The admin on the sites maintain a database of pedal products to the community.
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This database allows visitors to view reviews and ratings of their desired pedals. Those that create an account are able to leave reviews and save pedals in their favourites sections to curate there own selection!
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+The targeted audience is all who have a love of pedals and applying effects to their musical instruments be that guitars, keyboards, or drums.
 
-## Codeanywhere Reminders
+![Landing Page](documentation/landing-page.png)
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+Live Site - [The Pedal Platform](https://thepedalplatform-554a254bc88a.herokuapp.com/) <br>
+Project Repository - [The Pedal Platform - Repository](https://github.com/NDOMINEY/thepedalplatform)
 
-`python3 -m http.server`
+## Table of Contents
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+- [Requirements](#requirements "Requirements")
+- [Agile Methods](#agile-methods "Agile Methods")
+- [Design](#design "Design")
+  - [Database Schema](#database-schema "Database Schema")
+  - [Wireframes](#wireframes "Wireframes")
+  - [Colour Scheme](#colour-scheme "Colour Scheme")
+- [Features](#features "Features")
+  - [Existing Features](#existing-features "Existing Features")
+  - [Future Features](#future-features "Future Features")
+- [Testing](#testing "Testing")
+  - [Development Process](#development-process "Development Process")
+  - [Usability Testing](#usability-testing "Usability Testing")
+  - [User Requirement Testing](#user-requirement-testing "User Requirement Testing")
+  - [Functional Testing](#functional-testing "Functional Testing")
+  - [Validator Testing](#validator-testing "Validator Testing")
+  - [Automated Testing](#automated-testing "Automated Testing")
+- [Technologies Used](#technologies-used "Technologies Used")
+  - [Main Languages Used](#main-languages-used "Main Languages Used")
+- [Deployment](#deployment "Deployment")
+- [Credits](#credits "Credits")
+  - [Content](#content "Content")
+  - [Media](#media "Media")
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+## Requirements
 
-`http_server`
+## Agile Methods
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+Through this object I have taken an agile approach to my development. To do this, I used the github issue and project board to organise my user stories. Please see link below.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+[Agile Development - Project Board](https://github.com/users/NDOMINEY/projects/3)
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Design
 
-To log into the Heroku toolbelt CLI:
+### Database Schema
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Wireframes:
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Colour Scheme:
 
----
+## Features
 
-Happy coding!
+### Existing Features
+
+#### Navigation Bar
+
+##### Navigation bar - user not logged in
+
+##### Navigation bar - user logged in
+
+##### Navigation bar - hamburger view
+
+##### Navigation bar - collapsed hamburger view
+
+#### Home Page/Landing Page
+
+#### About - Facilities
+
+#### Contact Us
+
+#### User Registration
+
+#### User Login
+
+#### User Logout
+
+#### User Account
+
+## Testing
+
+### Development Process
+
+### Usability Testing
+
+### User Requirement Testing
+
+### Functional Testing
+
+### Validator Testing
+
+#### Lighthouse
+
+#### HTML Validator
+
+HTML validator tests were carried out accross the site.
+
+#### Python
+
+Through the IDE pep8 compliance was checked to ensure the code was validated
+
+### Automated Testing
+
+# Technologies Used
+
+- Whitenoise was used to serve the static files - [Whitenoise](https://whitenoise.readthedocs.io/en/stable/)
+- Bootstrap was used for basic html styling - [Bootstrap](https://getbootstrap.com/)
+- Elephantsql was used for the sites database - [ElephantSQL](https://customer.elephantsql.com/)
+
+### Main Languages and Frameworks Used
+
+- Python
+- Javascript
+- HTML5
+- CSS3
+- React
+
+## Deployment
+
+This site is deployed through Heruko. The following steps where followed within Heroku -
+
+Whilst on the main dashboard, click 'Create new app'
+Then enter the name of the project, select your region, and the click 'Create App'
+Within the settings tab, you must update the 'Config Vars' to include the following: DATABASE_URL, DEBUG, HEROKU_POSTGRESQL_PURPLE_URL, SECRET_KEY.
+Click 'Reveal Config Vars' to add.
+In the deploy tab, under deployment method select 'GitHub'
+Next search and connect to the correct repository from GitHub
+Finally, scroll down towards the bottom and you will see 'Manual Deployment'. Select the branch you would like to deploy from and click 'Deploy Branch'. Once complete, you will be presented with a link to open the deployed site.
+You can also set up auto deployments, this means Heroku will re-deploy the site every time you push an update to your GitHub repository.
+
+#### Future development
+
+To carry out further development on the project you can clone the repository locally. This is completed by carrying out the following steps -
+
+Within your repository, make sure you are on the 'Code' tab
+Click on the button that shows '<> Code'
+Then select how you wish to clone
+To create an isolated version of the project, you may add a branch off of main. To do this follow the below steps -
+
+Whilst in the code section, click on 'branch'
+You will then see a breakdown of the exisiting branches
+To add a new branch, click 'New Branch' which is a green button
+Then name your branch and select the branch source
+
+## Credits
+
+### Content
+
+### Media
+
+#### Images
+
+#### Logo
+
+The logo was created using [Adobe Express](https://www.adobe.com/express/create/logo/website)
