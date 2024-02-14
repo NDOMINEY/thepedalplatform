@@ -14,7 +14,7 @@ const ProductDetail = () => {
   const [pedalDetail, setPedal] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useContext(CurrentUserContext);
-  const userID = currentUser.pk;
+  const [userID, setUserID] = useState(false);
 
   const [reviews, setReviews] = useState({ results: [] });
   const [favouriteData, setFavouriteData] = useState(false);
@@ -30,14 +30,18 @@ const ProductDetail = () => {
         setPedal({ results: [pedalDetail] });
         setReviews(review);
 
-        const { data } = await axiosReq.get(
-          `/favourite/?pedal=${id}&owner=${userID}`
-        );
+        if (currentUser !== null) {
+          setUserID(currentUser.pk);
 
-        if (Object.keys(data).length === 1) {
-          setFavouriteData(data);
-        } else {
-          setFavouriteData(false);
+          const { data } = await axiosReq.get(
+            `/favourite/?pedal=${id}&owner=${userID}`
+          );
+
+          if (Object.keys(data).length === 1) {
+            setFavouriteData(data);
+          } else {
+            setFavouriteData(false);
+          }
         }
 
         setHasLoaded(true);
@@ -196,27 +200,31 @@ const ProductDetail = () => {
       <section>
         {hasLoaded ? (
           <>
-            {favouriteData ? (
+            {currentUser !== null ? (
               <>
-                <button
-                  onClick={handleRemoveFavourite}
-                  id={styles.favourite_star}
-                  className={styles.btn}
-                >
-                  &#9733; Favourite!
-                </button>
+                {favouriteData ? (
+                  <>
+                    <button
+                      onClick={handleRemoveFavourite}
+                      id={styles.favourite_star}
+                      className={styles.btn}
+                    >
+                      &#9733; Favourite!
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={handleAddFavourite}
+                      id={styles.unfavourite_star}
+                      className={styles.btn}
+                    >
+                      &#9734; Favourite?
+                    </button>
+                  </>
+                )}
               </>
-            ) : (
-              <>
-                <button
-                  onClick={handleAddFavourite}
-                  id={styles.unfavourite_star}
-                  className={styles.btn}
-                >
-                  &#9734; Favourite?
-                </button>
-              </>
-            )}
+            ) : null}
           </>
         ) : null}
       </section>
