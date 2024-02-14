@@ -46,11 +46,19 @@ Through this object I have taken an agile approach to my development. To do this
 
 ## Design
 
-### Database Schema
-
 ### Wireframes:
 
 ### Colour Scheme:
+
+## Data Models
+
+The backend of this project had been created using Django Rest Framework.
+
+Firstly, I started by assessing what models would be required to enable the main features of the site to function. I did this by creating a database diagram using [Lucid Chart](https://www.lucidchart.com/)
+
+![Database Diagram](documentation/db_diagram.png)
+
+When implementing this using Django Rest Framework, I used supplied User model from the django.contrib.auth. I then created custom models for profiles, pedals, brands, reviews, and favourites.
 
 ## Features
 
