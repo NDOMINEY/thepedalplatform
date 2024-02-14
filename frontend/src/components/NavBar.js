@@ -50,7 +50,8 @@ const NavBar = () => {
             className="nav-link"
             onClick={() => setExpanded(false)}
           >
-            Favourite Pedals
+            Favourite <br />
+            Pedals
           </Link>
         </NavDropdown.Item>
         <NavDropdown.Item>
