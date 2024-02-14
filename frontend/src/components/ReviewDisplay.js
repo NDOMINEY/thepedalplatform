@@ -15,7 +15,7 @@ function ReviewDisplay(props) {
 
   const [errors, setErrors] = useState({});
 
-  const setHasLoaded = props.setHasLoaded;
+  const dataRefresh = props.dataRefresh;
   const setMessage = props.setMessage;
 
   // Modal for delete confirmation pop up
@@ -38,7 +38,7 @@ function ReviewDisplay(props) {
     try {
       await axios.delete(`/review/${props.id}`);
       setMessage("Review deleted");
-      setHasLoaded(false);
+      dataRefresh();
     } catch (err) {
       setErrors(err.response?.data);
     }

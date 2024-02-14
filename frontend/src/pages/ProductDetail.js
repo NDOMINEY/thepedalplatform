@@ -51,7 +51,23 @@ const ProductDetail = () => {
     };
     setHasLoaded(false);
     handleMount();
-  }, [id, userID]);
+  }, [id, userID, currentUser]);
+
+  // refresh data
+
+  const dataRefresh = async (event) => {
+    try {
+      const [{ data: pedalDetail }, { data: review }] = await Promise.all([
+        axiosReq.get(`/pedal/${id}`),
+        axiosReq.get(`/review/?pedal=${id}`),
+      ]);
+
+      setPedal({ results: [pedalDetail] });
+      setReviews(review);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // Review form data handling
 
@@ -84,12 +100,13 @@ const ProductDetail = () => {
       }));
 
       try {
-        const [{ data: review }] = await Promise.all([
+        const [{ data: pedalDetail }, { data: review }] = await Promise.all([
+          axiosReq.get(`/pedal/${id}`),
           axiosReq.get(`/review/?pedal=${id}`),
         ]);
+
+        setPedal({ results: [pedalDetail] });
         setReviews(review);
-        setMessage("Review added!");
-        setHasLoaded(false);
       } catch (err) {
         console.log(err);
       }
@@ -301,6 +318,7 @@ const ProductDetail = () => {
                 setHasLoaded={setHasLoaded}
                 setMessage={setMessage}
                 setReviews={setReviews}
+                dataRefresh={dataRefresh}
               />
             ))
           ) : (
