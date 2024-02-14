@@ -40,10 +40,10 @@ const RegisterForm = () => {
 
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="username">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Username</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Enter email"
+                type="text"
+                placeholder="Enter username"
                 name="username"
                 value={username}
                 onChange={handleChange}
