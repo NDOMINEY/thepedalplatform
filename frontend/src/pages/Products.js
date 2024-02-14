@@ -70,8 +70,13 @@ const ProductsView = () => {
 
   return (
     <div className={styles.product_container}>
-      <Row>
-        <Col xs={12} md={3}>
+      <Row id={styles.product_grid}>
+        <Col
+          xs={12}
+          md={3}
+          className={styles.product_col}
+          id={styles.filter_width}
+        >
           <section className={styles.product_filter}>
             <h4>Search and Filter</h4>
             <button
@@ -148,9 +153,9 @@ const ProductsView = () => {
             </div>
           </section>
         </Col>
-        <Col>
+        <Col className={styles.product_col}>
           <section className={styles.product_title}>
-            <h1>The Pedal Inventory!</h1>
+            <h3>The Pedal Inventory!</h3>
           </section>
 
           <section className={styles.product_list}>
