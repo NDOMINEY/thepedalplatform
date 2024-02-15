@@ -17,7 +17,7 @@ Project Repository - [The Pedal Platform - Repository](https://github.com/NDOMIN
 - [Agile Methods](#agile-methods "Agile Methods")
 - [Design](#design "Design")
   - [Wireframes](#wireframes "Wireframes")
-  - [React Components](#react_components "React Components")
+  - [React Components](#react-components "React Components")
   - [Colour Scheme](#colour-scheme "Colour Scheme")
 - [Data Models](#data-models "Data Models")
 - [API End Points](#api-end-points "API End Points")
