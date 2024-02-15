@@ -64,6 +64,10 @@ Through this object I have taken an agile approach to my development. To do this
 
 [Agile Development - Project Board](https://github.com/users/NDOMINEY/projects/3)
 
+Please see below Epics and User Stories which have been list by MoSCoW order. Link here for view of full document - [EPICS & USER STORIES](documentation/epics_userstories.png)
+
+![Epics and User Stories](documentation/epics_userstories.png)
+
 ## Design
 
 ### Wireframes:
