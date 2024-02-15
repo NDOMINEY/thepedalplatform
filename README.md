@@ -16,9 +16,10 @@ Project Repository - [The Pedal Platform - Repository](https://github.com/NDOMIN
 - [Requirements](#requirements "Requirements")
 - [Agile Methods](#agile-methods "Agile Methods")
 - [Design](#design "Design")
-  - [Database Schema](#database-schema "Database Schema")
   - [Wireframes](#wireframes "Wireframes")
   - [Colour Scheme](#colour-scheme "Colour Scheme")
+- [Data Models](#data-models "Data Models")
+- [API End Points](#api-end-points "API End Points")
 - [Features](#features "Features")
   - [Existing Features](#existing-features "Existing Features")
   - [Future Features](#future-features "Future Features")
@@ -59,6 +60,23 @@ Firstly, I started by assessing what models would be required to enable the main
 ![Database Diagram](documentation/db_diagram.png)
 
 When implementing this using Django Rest Framework, I used supplied User model from the django.contrib.auth. I then created custom models for profiles, pedals, brands, reviews, and favourites.
+
+## API End Points
+
+Please see below a breakdown of the API end points that have been used throughout the productions of the project.
+
+|            URL            |                                                                                  Function                                                                                   | HTTP Method             |        CRUD operation        |
+| :-----------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ----------------------- | :--------------------------: |
+|      '/api/profiles/      |                                              Returns a list of all profiles. Able to be filtered by name, brand and category.                                               | GET                     |             Read             |
+| '/api/profiles/<int:pk>'  | Returns the details of an exact user profile specified by its ID. This record is automatically created when a user registers. Owners and admin are able to edit the record. | GET, PUT                |       Read and Update        |
+|      '/api/brands/'       |                                                                           Returns list of brands.                                                                           | GET                     |             Read             |
+|  '/api/brands/<int:pk>'   |                                                Returns individual detail of brand record. Admin are able to edit and delete.                                                | GET, PUT, DELETE        | Create, Read, Update, Delete |
+|       '/api/pedal/'       |                                                                       Returns list of pedal products.                                                                       | GET                     |             Read             |
+|   '/api/pedal/<int:pk>'   |                                              Returns details of individual pedal products. Admin are able to edit and delete.                                               | GET, PUT, DELETE        | Create, Read, Update, Delete |
+|     '/api/favourite/'     |                                Returns list of pedals that have been flagged as a favourite. This is able to be filtered by pedal and owner.                                | GET                     |             Read             |
+| '/api/favourite/<int:pk>' |                                          Return individual favourite record. Owner and admin are able to create and delete record.                                          | GET, PUT, DELETE        |     Create, Read, Delete     |
+|      '/api/review/'       |                                                           Returns list of reviews, able to be filtered by pedal.                                                            | GET                     |             Read             |
+|  '/api/review/<int:pk>'   |                                           Returns individual review record. Owner and admin are able to update and delete record.                                           | GET, PUT, PATCH, DELETE | Create, Read, Update, Delete |
 
 ## Features
 
