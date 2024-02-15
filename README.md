@@ -181,13 +181,38 @@ Additionally, once a user is logged in, they are able to toggle between adding a
 
 #### User Registration
 
+When the register linked is selected, the Register Form component is loaded (RegisterForm.js). This allowed the user to create a login using the dj-rest-auth framework. Upon succesful submission, the user is the diverted to the login page.
+
+![Register Form](documentation/register.png)
+
+When the data is not correct on the form, this is fed back to the user.
+
+![Register Form - Feedback](documentation/register_feedback.png)
+
 #### User Login
+
+Similarly to the register component, when login in selected the login component is rendered to the user.
+
+![Login Form](documentation/login.png)
 
 #### User Logout
 
+The logout process is carried out by the user clicking the logout link from the NavBar. This link then triggers a function that sends an api request to "dj-rest-auth/logout" to log the user out. Once complete the user is the diverted back to the home page.
+
+![Logout](documentation/logout.png)
+
 #### User Profile
 
+When logged in, the user is able to view and edit their profile details. This includes their name and a section about them.
+Each profile contains a default image and from the profile component, the user is also able to upload a profile image of their choice. This media is stored using cloudinary.
+
+![Profile](documentation/profile.png)
+
 #### User Favourites
+
+Another function available to users is to view products they have added to their favourites. This renders from the Favourites components (Favourites.js) and displays the pedals in the same style as the products page. The user is able to click on a product from this and it directs the user to the products individual detail page.
+
+![Favourites](documentation/favourites.png)
 
 ## Testing
 
