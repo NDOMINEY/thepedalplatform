@@ -17,6 +17,7 @@ Project Repository - [The Pedal Platform - Repository](https://github.com/NDOMIN
 - [Agile Methods](#agile-methods "Agile Methods")
 - [Design](#design "Design")
   - [Wireframes](#wireframes "Wireframes")
+  - [React Components](#react_components "React Components")
   - [Colour Scheme](#colour-scheme "Colour Scheme")
 - [Data Models](#data-models "Data Models")
 - [API End Points](#api-end-points "API End Points")
@@ -48,6 +49,12 @@ Through this object I have taken an agile approach to my development. To do this
 ## Design
 
 ### Wireframes:
+
+### React Components:
+
+With the wireframes created, I then mapped out and planned the use of React components and where I could re-use components for efficient and clean coding. This would also enable for future changes to be made in one place and rather than having to edit in multiple components.
+
+![React Components](documentation/react_components.png)
 
 ### Colour Scheme:
 
