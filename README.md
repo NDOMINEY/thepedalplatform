@@ -121,19 +121,63 @@ Please see below a breakdown of the API end points that have been used throughou
 
 #### Navigation Bar
 
+Present on each page is the NavBar component (NavBar.js) which contains the site logo and links to various areas of the site. The logo acts as a link to the home page as well as a direct "Home" page button. Also there is the "Pedal" options which is present for all visitors which takes the user to the main product page.
+
+The NavBar will determine whether their is a user currently logged in. If so it will provide links that allow the user to go to their Profile and Favourites page, as well as log out. If there is no user, then a login and register link will appear.
+
 ##### Navigation bar - user not logged in
+
+![Navigation bar - user not logged in](documentation/navbar_no_user.png)
 
 ##### Navigation bar - user logged in
 
+![Navigation bar - user logged in](documentation/navbar_user.png)
+
 ##### Navigation bar - hamburger view
 
-##### Navigation bar - collapsed hamburger view
+For responsive design, when the screen becomes small the navigation links change to a hamburger menu.
+
+![Navigation bar - hamburger closed](documentation/navbar_hamburger.png)
+
+![Navigation bar - hamburger open](documentation/navbar_hamburger_open.png)
 
 #### Home Page/Landing Page
 
-#### About - Facilities
+When the site is loaded from the root file, landing component (Landing.js) is displayed to the user. Within this component, a clear full logo of the site is shown to welcome the user and to clearly demonstrate the purpose of the site. This is followed by a brief description to further detail this, with a link to the primary feature of the product page (Products.js).
 
-#### Contact Us
+![Landing Page](documentation/landing_page.png)
+
+If the there is no current user logged in, then links to login and register will also be present.
+
+![Landing Links](documentation/landing_links.png)
+
+#### Products
+
+The main feature of the site is a directory of products for the visitor to view and see reviews and ratings. The products page (Products.js), features a search and filter section which will provide the user a means to narrow down their search if required.
+
+![Product Filter](documentation/products_filter.png)
+
+Along side this, is a display of all of the products. To compliment the theme of the site, rather than a list of products, they are displayed as mini pedals using css design. To make the pedals responsive to user interaction, when element is hovered over the pedal light 'turns on' and changes to a red colour to feed this back to the user.
+
+![Pedal Display](documentation/pedal_display.png)
+
+Due to the length of the page caused by large amount of products when unfiltered, a button has been added to allow the user to go straight to the top of the page if needed.
+
+![Page Scroll](documentation/top_scroll.png)
+
+#### Product Detail
+
+When a pedal is clicked from the products page, it loads the product details component (ProductDetail.js which also has the ReviewDisplay.js component nested). This shows the details of that specific product and all linked reviews. If there are no reviews, it will states there is currently none.
+
+![Product Detail - no user](documentation/pedal_detail_nouser.png)
+
+As seen above, when no user is logged in, between the pedal display and the reviews is a prompt for the user to login to add reviews. Once the user has logged in they will be able to complete a form to add a review to the product.
+
+![Product Detail - user logged in](documentation/pedal_detail_user.png)
+
+Additionally, once a user is logged in, they are able to toggle between adding and removing the product from their favourites list.
+
+![Favourite Toggle](documentation/favourite_toggle.png)
 
 #### User Registration
 
@@ -141,7 +185,9 @@ Please see below a breakdown of the API end points that have been used throughou
 
 #### User Logout
 
-#### User Account
+#### User Profile
+
+#### User Favourites
 
 ## Testing
 
