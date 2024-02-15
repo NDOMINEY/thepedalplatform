@@ -50,6 +50,10 @@ Through this object I have taken an agile approach to my development. To do this
 
 ### Wireframes:
 
+The below wireframe represents the concenpt idea at the initial planning stages. While the layouts and features remain mostly aligned to the deployed project,throughout the development and testing phases these were further refined. The wireframe also includes an additional 'could have' feature that has not made it into this stage of project deployment.
+
+![Wireframes](documentation/wireframes.pdf)
+
 ### React Components:
 
 With the wireframes created, I then mapped out and planned the use of React components and where I could re-use components for efficient and clean coding. This would also enable for future changes to be made in one place and rather than having to edit in multiple components.
