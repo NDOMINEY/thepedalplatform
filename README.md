@@ -58,6 +58,10 @@ With the wireframes created, I then mapped out and planned the use of React comp
 
 ### Colour Scheme:
 
+With the aid of [Coolors - Palette Generator](https://coolors.co/) a colour scheme was curated that was mostly neutral with a bold colour that enables the site logo and call to action elements to the visitor clear.
+
+![Colour Scheme](documentation/palette.png)
+
 ## Data Models
 
 The backend of this project had been created using Django Rest Framework.
