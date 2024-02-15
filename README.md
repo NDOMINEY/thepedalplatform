@@ -309,6 +309,12 @@ Please expand 'Functional Test Cases' below to see a breakdown of the tests carr
 
 #### Lighthouse
 
+I carried out lighthouse testing on each page to check for areas of improvements. As a result of these checks I carried out the following changes:
+
+- Contract on blackground grey container contrast not high enough compared to text, I therefore add transparency to this to improve readability.
+- Screen reader issues on multiple buttons used for product display list, to resolved aria-label's where added to the product buttons.
+- HTML headers no used in consecutive order, html adjusted to reflect correct application
+
 #### HTML Validator
 
 HTML validator tests were carried out accross the site.

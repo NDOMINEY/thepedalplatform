@@ -9,7 +9,7 @@ const Landing = () => {
 
   return (
     <div className={styles.landing_container}>
-      <h1>WELCOME TO</h1>
+      <h4>WELCOME TO</h4>
       <img src={logo_transparent} alt="logo" />
       <br />
       <br />
