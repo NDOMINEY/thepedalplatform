@@ -178,7 +178,10 @@ const ProductsView = () => {
                       <div className={styles.pedal_light}></div>
 
                       <div>
-                        <button className={styles.pedal_button}></button>
+                        <button
+                          aria-label={product.name}
+                          className={styles.pedal_button}
+                        ></button>
                       </div>
                     </div>
                   </Link>

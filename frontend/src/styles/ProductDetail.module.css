@@ -156,7 +156,7 @@
   width: auto;
   padding: 25px;
   margin: 0 25px 25px 25px;
-  background-color: #dedede;
+  background-color: rgb(222, 222, 222, 0.75);
   border-radius: 10px;
 }
 
@@ -197,7 +197,7 @@ img {
   width: auto;
   padding: 25px;
   margin: 0 25px 25px 25px;
-  background-color: #dedede;
+  background-color: rgb(222, 222, 222, 0.75);
   border-radius: 10px;
 }
 

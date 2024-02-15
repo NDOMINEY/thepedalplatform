@@ -40,7 +40,7 @@
   height: 100%;
   width: 100%;
   padding: 75px 20px 20px 20px;
-  background-color: #dedede;
+  background-color: rgb(222, 222, 222, 0.75);
 }
 
 /* page title styling */
@@ -226,7 +226,7 @@ img {
     height: 100%;
     width: auto;
     padding: 50px 20px 20px 20px;
-    background-color: #dedede;
+    background-color: rgb(222, 222, 222, 0.75);
   }
 
   .filtering_toggle {

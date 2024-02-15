@@ -1,6 +1,10 @@
 .NavBar {
-  background-color: #42c6ae;
+  background-color: rgb(66, 198, 174);
   text-align: right;
+  color: black;
+}
+.variant_myColor {
+  color: black;
 }
 
 .links > a {

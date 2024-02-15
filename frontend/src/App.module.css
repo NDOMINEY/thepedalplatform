@@ -1,38 +1,38 @@
 * {
-    margin: 0px;
-    font-family: 'Roboto', sans-serif;
-    color: black;
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+  color: black;
 }
 
 body {
-    background-color: white;
+  background-color: white;
 }
 
 .Content {
-    position: relative;
-    top: 90px;
-    margin: 0;
-    padding: 0;
+  position: relative;
+  top: 80px;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    color: black;
-    padding: 2px;
+  color: black;
+  padding: 2px;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover i {
-    color: #354B46;
+  color: #354b46;
 }
 
 i {
-    color: black;
+  color: black;
 }
 
 i:hover {
-    cursor: pointer;
-    color: #354B46;
+  cursor: pointer;
+  color: #354b46;
 }
