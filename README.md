@@ -40,6 +40,24 @@ Project Repository - [The Pedal Platform - Repository](https://github.com/NDOMIN
 
 ## Requirements
 
+Please see below a table showing the key requirements of the site and their importance.
+
+| Requirement                                                                    | Importance | Viability/Feasibility |
+| ------------------------------------------------------------------------------ | :--------: | :-------------------: |
+| Have a clear and purposeful landing page displaying the purpose of the site    |     5      |           5           |
+| Provide the vistors access to an arrange of pedal products                     |     5      |           5           |
+| Allow vistors to filter view of pedals                                         |     5      |           5           |
+| Allow vistors to create user accounts and add reviews and ratings for products |     5      |           5           |
+| Allow users to save favourite pedals for future reference                      |     5      |           5           |
+| Allow user to update profile information                                       |     5      |           5           |
+| Provide a login link so user can easily login                                  |     5      |           5           |
+| Enable logged in user to log out                                               |     5      |           5           |
+| Allow vistors to be able to report a suspect review                            |     3      |           3           |
+| Allow users to create virtual pedal board plans from the inventory of products |     2      |           1           |
+| User to be able to request products to be added                                |     2      |           1           |
+| Moderation for user generated content                                          |     1      |           1           |
+| Provide price comparison and purchase links from agreed retailers              |     1      |           1           |
+
 ## Agile Methods
 
 Through this object I have taken an agile approach to my development. To do this, I used the github issue and project board to organise my user stories. Please see link below.
@@ -52,7 +70,7 @@ Through this object I have taken an agile approach to my development. To do this
 
 The below wireframe represents the concenpt idea at the initial planning stages. While the layouts and features remain mostly aligned to the deployed project,throughout the development and testing phases these were further refined. The wireframe also includes an additional 'could have' feature that has not made it into this stage of project deployment.
 
-![Wireframes](documentation/wireframes.pdf)
+- Please find link to [Wireframes](documentation/wireframes.pdf)
 
 ### React Components:
 
