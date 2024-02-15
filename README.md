@@ -121,9 +121,9 @@ Please see below a breakdown of the API end points that have been used throughou
 
 #### Navigation Bar
 
-Present on each page is the NavBar component (NavBar.js) which contains the site logo and links to various areas of the site. The logo acts as a link to the home page as well as a direct "Home" page button. Also there is the "Pedal" options which is present for all visitors which takes the user to the main product page.
+Present on each page is the NavBar component (NavBar.js) which contains the site logo and links to various areas of the site. The logo acts as a link to the home page as well as a direct "Home" page button. Also there is the "Pedal" link which is present for all visitors which takes the user to the main product page.
 
-The NavBar will determine whether their is a user currently logged in. If so it will provide links that allow the user to go to their Profile and Favourites page, as well as log out. If there is no user, then a login and register link will appear.
+The NavBar will determine whether the is a user currently logged in. If so it will provide links that allow the user to go to their Profile and Favourites page, as well as log out. If there is no user, then a login and register link will appear.
 
 ##### Navigation bar - user not logged in
 
@@ -157,7 +157,7 @@ The main feature of the site is a directory of products for the visitor to view 
 
 ![Product Filter](documentation/products_filter.png)
 
-Along side this, is a display of all of the products. To compliment the theme of the site, rather than a list of products, they are displayed as mini pedals using css design. To make the pedals responsive to user interaction, when element is hovered over the pedal light 'turns on' and changes to a red colour to feed this back to the user.
+Along side this, is a display of all of the products. To compliment the theme of the site, rather than a list of products, they are displayed as mini pedals using css design. To make the pedals responsive to user interaction, when an element is hovered over the pedal light 'turns on' and changes to a red colour to feed this back to the user.
 
 ![Pedal Display](documentation/pedal_display.png)
 
