@@ -199,7 +199,7 @@ const ProductDetail = () => {
                 <p>Brand: {product.brand}</p>
                 <p>Category: {product.category}</p>
                 <p>Price: {product.price}</p>
-                <p>Average Rating: {product.review_average}/5 </p>
+                <p>Average Rating: {Math.round(product.review_average)}/5 </p>
                 <p>Total Ratings: {product.review_count}</p>
               </div>
             </div>
