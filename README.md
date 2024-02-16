@@ -355,6 +355,13 @@ Provided with further time, I would like to add automated testing to test the AP
 
 ## Deployment
 
+As the backend (DRF) and frontend (REACT APP) are within the same repository, when any changes are made within the front end folder the static files need to be deleted and recreated to capture all of the updated. This can be done via the following commands with the terminal -
+
+```
+cd frontend
+npm run build && rm -rf ../staticfiles/build && mv build ../staticfiles/.
+```
+
 This site is deployed through Heruko. The following steps where followed within Heroku -
 
 Whilst on the main dashboard, click 'Create new app'
