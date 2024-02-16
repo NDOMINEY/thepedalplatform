@@ -350,6 +350,8 @@ Provided with further time, I would like to add automated testing to test the AP
 - Javascript
 - JSX to write HTML im React
 - CSS
+- Node Package Manager
+- Eslint - linting tool
 
 ## Deployment
 
@@ -382,6 +384,7 @@ Then name your branch and select the branch source
 
 ### Content
 
+Font provided by [Google Fonts](https://fonts.google.com/)
 Button's styled through [CSS Button Creator](https://cssbuttoncreator.com/)
 Text areas on form tutorial by [Tutorials Point](https://www.tutorialspoint.com/How-to-Create-a-Multi-line-Text-Input-Text-Area-In-HTML)
 Scroll to top button tutorial and code provided by [Geeks for Geeks](https://www.geeksforgeeks.org/how-to-create-a-scroll-to-top-button-in-react-js/)
