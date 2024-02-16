@@ -311,9 +311,17 @@ Please expand 'Functional Test Cases' below to see a breakdown of the tests carr
 
 I carried out lighthouse testing on each page to check for areas of improvements. As a result of these checks I carried out the following changes:
 
-- Contract on blackground grey container contrast not high enough compared to text, I therefore add transparency to this to improve readability.
-- Screen reader issues on multiple buttons used for product display list, to resolved aria-label's where added to the product buttons.
-- HTML headers no used in consecutive order, html adjusted to reflect correct application
+- Background grey container contrast not high enough compared to text, I therefore added transparency to this to improve readability.
+- Screen reader issues on multiple buttons used for product display list, resolved by adding aria-label's
+- HTML headers not used in consecutive order, html adjusted to reflect correct application
+
+PDF's below:
+
+- [Home](documentation/lighthouse_home.pdf)
+- [Product Inventory](documentation/lighthouse_product.pdf)
+- [Product Detail](documentation/lighthouse_pedal_detail.pdf)
+- [Profile](documentation/lighthouse_profile.pdf)
+- [Favourites](documentation/lighthouse_favourites.pdf)
 
 #### HTML Validator
 
@@ -325,19 +333,23 @@ Through the IDE pep8 compliance was checked to ensure the code was validated
 
 ### Automated Testing
 
+Provided with further time, I would like to add automated testing to test the API End Points worked correctly. Instead, this had been extensively tested manually.
+
 # Technologies Used
 
 - Whitenoise was used to serve the static files - [Whitenoise](https://whitenoise.readthedocs.io/en/stable/)
 - Bootstrap was used for basic html styling - [Bootstrap](https://getbootstrap.com/)
 - Elephantsql was used for the sites database - [ElephantSQL](https://customer.elephantsql.com/)
+- Cloudinary was used to store media files - [Cloudinary](https://cloudinary.com/)
 
 ### Main Languages and Frameworks Used
 
 - Python
-- Javascript
-- HTML5
-- CSS3
+- Django Rest Framework
 - React
+- Javascript
+- JSX to write HTML im React
+- CSS
 
 ## Deployment
 
@@ -345,7 +357,7 @@ This site is deployed through Heruko. The following steps where followed within 
 
 Whilst on the main dashboard, click 'Create new app'
 Then enter the name of the project, select your region, and the click 'Create App'
-Within the settings tab, you must update the 'Config Vars' to include the following: DATABASE_URL, DEBUG, HEROKU_POSTGRESQL_PURPLE_URL, SECRET_KEY.
+Within the settings tab, you must update the 'Config Vars' to include the following: DATABASE_URL, HEROKU_POSTGRESQL_PURPLE_URL, SECRET_KEY.
 Click 'Reveal Config Vars' to add.
 In the deploy tab, under deployment method select 'GitHub'
 Next search and connect to the correct repository from GitHub
@@ -370,9 +382,16 @@ Then name your branch and select the branch source
 
 ### Content
 
+Button's styled through [CSS Button Creator](https://cssbuttoncreator.com/)
+Text areas on form tutorial by [Tutorials Point](https://www.tutorialspoint.com/How-to-Create-a-Multi-line-Text-Input-Text-Area-In-HTML)
+Scroll to top button tutorial and code provided by [Geeks for Geeks](https://www.geeksforgeeks.org/how-to-create-a-scroll-to-top-button-in-react-js/)
+Table in README provided by [Tablesgenerator](https://www.tablesgenerator.com/markdown_tables#)
+
 ### Media
 
 #### Images
+
+Loading gif provided by [Pixabay](https://pixabay.com/users/ekkant-33254754/)
 
 #### Logo
 
