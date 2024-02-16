@@ -34,11 +34,11 @@ const NavBar = () => {
 
   const loggedIn = (
     <>
-      <NavDropdown title="My Account" id="basic-nav-dropdown text-dark">
+      <NavDropdown title="My Account" id="basic-nav-dropdown ">
         <NavDropdown.Item>
           <Link
             to={`/profile/${profile_id}`}
-            className="nav-link text-dark"
+            className="nav-link "
             onClick={() => setExpanded(false)}
           >
             My Profile
@@ -47,7 +47,7 @@ const NavBar = () => {
         <NavDropdown.Item>
           <Link
             to={`/favourites/${profile_id}`}
-            className="nav-link text-dark"
+            className="nav-link "
             onClick={() => setExpanded(false)}
           >
             Favourite <br />
@@ -55,7 +55,7 @@ const NavBar = () => {
           </Link>
         </NavDropdown.Item>
         <NavDropdown.Item>
-          <Link to="/" className="nav-link text-dark" onClick={handleLogout}>
+          <Link to="/" className="nav-link " onClick={handleLogout}>
             Logout
           </Link>
         </NavDropdown.Item>
@@ -66,14 +66,14 @@ const NavBar = () => {
     <>
       <Link
         to="/login"
-        className="nav-link text-dark"
+        className="nav-link "
         onClick={() => setExpanded(false)}
       >
         Login
       </Link>
       <Link
         to="/register"
-        className="nav-link text-dark"
+        className="nav-link "
         onClick={() => setExpanded(false)}
       >
         Register
@@ -87,40 +87,32 @@ const NavBar = () => {
       className={styles.NavBar}
       expanded={expanded}
       expand="lg"
-      variant="myColour"
     >
       <Container fluid>
         <Navbar.Brand>
-          <Link
-            to="/"
-            className="nav-link text-dark"
-            onClick={() => setExpanded(false)}
-          >
+          <Link to="/" className="nav-link " onClick={() => setExpanded(false)}>
             <img src={logo_short_transparent} alt="logo" height="50" />
           </Link>
         </Navbar.Brand>
 
         <Navbar.Toggle
-          variant="myColour"
           aria-controls="navbarScroll"
           onClick={() => setExpanded(!expanded)}
         />
 
-        <Navbar.Collapse id="navbarScroll" variant="myColour">
-          <Nav className="ml-auto" navbarScroll variant="myColour">
+        <Navbar.Collapse id="navbarScroll">
+          <Nav className="ml-auto" navbarScroll>
             <Link
               to="/"
-              className="nav-link text-dark"
+              className="nav-link "
               onClick={() => setExpanded(false)}
-              variant="myColour"
             >
               Home
             </Link>
             <Link
               to="/products"
-              className="nav-link text-dark"
+              className="nav-link "
               onClick={() => setExpanded(false)}
-              variant="myColour"
             >
               Pedals
             </Link>

@@ -40,7 +40,10 @@ function ProductDisplay(props) {
             <div className={styles.pedal_light}></div>
 
             <div>
-              <button className={styles.pedal_button}></button>
+              <button
+                aria-label={pedalDetail.name}
+                className={styles.pedal_button}
+              ></button>
             </div>
           </div>
         </Link>
