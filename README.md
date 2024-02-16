@@ -391,10 +391,10 @@ Then name your branch and select the branch source
 
 ### Content
 
-Font provided by [Google Fonts](https://fonts.google.com/)
-Button's styled through [CSS Button Creator](https://cssbuttoncreator.com/)
-Text areas on form tutorial by [Tutorials Point](https://www.tutorialspoint.com/How-to-Create-a-Multi-line-Text-Input-Text-Area-In-HTML)
-Scroll to top button tutorial and code provided by [Geeks for Geeks](https://www.geeksforgeeks.org/how-to-create-a-scroll-to-top-button-in-react-js/)
+Font provided by [Google Fonts](https://fonts.google.com/) <br/>
+Button's styled through [CSS Button Creator](https://cssbuttoncreator.com/)<br/>
+Text areas on form tutorial by [Tutorials Point](https://www.tutorialspoint.com/How-to-Create-a-Multi-line-Text-Input-Text-Area-In-HTML)<br/>
+Scroll to top button tutorial and code provided by [Geeks for Geeks](https://www.geeksforgeeks.org/how-to-create-a-scroll-to-top-button-in-react-js/)<br/>
 Table in README provided by [Tablesgenerator](https://www.tablesgenerator.com/markdown_tables#)
 
 ### Media
